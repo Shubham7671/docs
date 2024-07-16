@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Quickreel API",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -23,23 +23,14 @@
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "url": "https://www.api.quickreel.io/"
   },
   "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
   ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
+      "name": "Discord",
+      "icon": "discord",
       "url": "https://mintlify.com/community"
     },
     {
@@ -58,9 +49,9 @@
       ]
     },
     {
-      "group": "Essentials",
+      "group": "AI Clipping",
       "pages": [
-        "essentials/markdown",
+        "essentials/AIClipping",
         "essentials/code",
         "essentials/images",
         "essentials/settings",
@@ -71,7 +62,7 @@
     {
       "group": "API Documentation",
       "pages": [
-        "api-reference/introduction"
+        "/introduction"
       ]
     },
     {
