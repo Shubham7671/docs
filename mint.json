@@ -1,12 +1,8 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
-  "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
-  },
-  "favicon": "/favicon.svg",
-  "colors": {
+    "name": "Quickreel API",
+    "logo": "/logo.svg",
+    "favicon": "/favicon.png",
+    "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
     "dark": "#0D9373",
@@ -15,77 +11,148 @@
       "to": "#07C983"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+    "redirects": [
+        {
+            "source": "/reference-v2/api/push",
+            "destination": "/reference-v2/api/push-new-job"
+        }
+    ],
+    "topbarCtaButton": {
+        "name": "Create a new account",
+        "url": "https://www.api.quickreel.io/dashboard"
+    },
+    "api": {
+        "auth": {
+            "method": "key",
+            "name": "x-api-key"
+        },
+        "baseUrl": [
+            "https://mango.sievedata.com"
+        ]
+    },
+    "topbarLinks": [
+        {
+            "name": "Dashboard",
+            "url": "https://www.api.quickreel.io/dashboard"
+        }
+    ],
+    "anchors": [
+        {
+            "name": "Join Discord Community",
+            "icon": "discord",
+            "url": "https://discord.com/invite/HXQ92SDamV"
+        },
+        {
+            "name": "Book a Demo",
+            "icon": "phone",
+            "url": "https://docs.google.com/forms/d/e/1FAIpQLSeenF2Dlw5V7WKrbW0zWqLgXF_7-qDmEn2MV_zudO2tcEf_cg/viewform?pli=1"
+        }
+    ],
+    "navigation": [
+        {
+            "group": "Introduction",
+            "pages": [
+                "guide/intro",
+                "guide/public-functions"
+            ]
+        },
+        {
+            "group": "Custom Functions & Models",
+            "pages": [
+                "guide/custom-apps/deploying-functions",
+                "guide/custom-apps/gpu-acceleration",
+                "guide/custom-apps/referencing-functions",
+                "guide/custom-apps/typing",
+                "guide/custom-apps/autoscaling",
+                "guide/custom-apps/using-webhooks"
+            ]
+        },
+        {
+            "group": "Walkthroughs",
+            "pages": [
+                "guide/examples/audio-transcription",
+                "guide/examples/parallelized-face-detection",
+                "guide/examples/video-dubbing",
+                "guide/examples/live-audio-transcription"
+            ]
+        },
+        {
+            "group": "Reference",
+            "pages": [
+                {
+                    "group": "API Reference",
+                    "pages": [
+                        "reference-v2/api/intro",
+                        "reference-v2/api/create-new-job",
+                        "reference-v2/api/get-function",
+                        "reference-v2/api/get-function-versions",
+                        "reference-v2/api/get-function-version",
+                        "reference-v2/api/list-function-jobs",
+                        "reference-v2/api/get-job",
+                        "reference-v2/api/cancel-job",
+                        "reference-v2/api/list-jobs",
+                        "reference-v2/api/get-job-cost"
+                    ]
+                },
+                {
+                    "group": "CLI Reference",
+                    "pages": [
+                        "reference-v2/cli/intro",
+                        "reference-v2/cli/login",
+                        "reference-v2/cli/job",
+                        "reference-v2/cli/push",
+                        "reference-v2/cli/deploy",
+                        "reference-v2/cli/whoami"
+                    ]
+                },
+                {
+                    "group": "SDK Reference",
+                    "pages": [
+                        "reference-v2/sdk/intro",
+                        "reference-v2/sdk/functions_models",
+                        "reference-v2/sdk/types/file",
+                        "reference-v2/sdk/types/array",
+                        "reference-v2/sdk/types/image",
+                        "reference-v2/sdk/types/video",
+                        "reference-v2/sdk/types/audio"
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Reference (V1 Legacy)",
+            "pages": [
+                {
+                    "group": "API Reference",
+                    "pages": [
+                        "reference-v1/api/intro",
+                        "reference-v1/api/push",
+                        "reference-v1/api/jobs/get",
+                        "reference-v1/api/jobs/list",
+                        "reference-v1/api/models/get",
+                        "reference-v1/api/models/list",
+                        "reference-v1/api/models/metrics",
+                        "reference-v1/api/models/requests"
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Errors",
+            "pages": [
+                "error-codes"
+            ]
+        }
+    ],
+    "feedback": {
+        "thumbsRating": true,
+        "suggestEdit": true,
+        "raiseIssue": true
+    },
+    "footerSocials": {
+        "website": "https://www.sievedata.com",
+        "discord": "https://discord.com/invite/Pnh97rvRtD"
     }
-  ],
-  "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
-  },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
-  "navigation": [
-    {
-      "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
-    },
-    {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
-      ]
-    }
-  ],
-  "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
-  }
 }
+
+
