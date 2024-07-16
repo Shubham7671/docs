@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Quickreel API",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/quickreelAPIlogo.png",
+    "light": "/logo/quickreelAPIlogo.png"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -25,8 +25,7 @@
     "name": "Dashboard",
     "url": "https://www.api.quickreel.io/"
   },
-  "tabs": [
-  ],
+  "tabs": [],
   "anchors": [
     {
       "name": "Discord",
@@ -42,11 +41,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
+      "pages": ["introduction", "quickstart", "development"]
     },
     {
       "group": "AI Clipping",
@@ -61,9 +56,7 @@
     },
     {
       "group": "API Documentation",
-      "pages": [
-        "/introduction"
-      ]
+      "pages": ["/introduction"]
     },
     {
       "group": "Endpoint Examples",
