@@ -18,7 +18,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "https://forms.gle/xvy56QAf2Tuudh4p9"
     }
   ],
   "topbarCtaButton": {
@@ -30,18 +30,18 @@
     {
       "name": "Discord",
       "icon": "discord",
-      "url": "https://mintlify.com/community"
+      "url": "https://discord.com/invite/HXQ92SDamV"
     },
     {
-      "name": "Blog",
+      "name": "Product",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "url": "https://app.quickreel.io/"
     }
   ],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "pages": ["introduction", "gettingStarted"]
     },
     {
       "group": "AI Clipping",
