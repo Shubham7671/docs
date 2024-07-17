@@ -100,8 +100,12 @@
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
+    "x": "https://x.com/QuickReelHQ",
     "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "linkedin": "https://www.linkedin.com/company/quickreel/",
+    "youtube":"",
+    "youTube":"",
+    "instagram":""
+
   }
 }
