@@ -59,6 +59,7 @@
         },
         {
           "group": "AI Auto Crop",
+          "icon":"crop",
           "pages": [
             "api-reference/AIautocrop/gettingStarted",
             "api-reference/AIautocrop/create",
