@@ -16,7 +16,7 @@
     }
   ],
   "paths": {
-    "/api/request/aiclip": {
+    "/api/request/videos/AIclip": {
       "post": {
         "summary": "Request video processing",
         "description": "Request to process a video from a YouTube URL and receive the result via a callback URL",
@@ -55,14 +55,14 @@
         }
       }
     },
-    "/api/request/aiclip/status/{requestId}": {
+    "/api/request/videos/AIclip/status/{requestId}": {
       "get": {
         "summary": "Check request status",
         "description": "Check the processing status of a video request by request ID",
         "parameters": [
           {
             "name": "requestId",
-            "in": "query",
+            "in": "path",
             "required": true,
             "description": "ID of the video processing request",
             "schema": {
@@ -94,14 +94,14 @@
         }
       }
     },
-    "/api/request/aiclip/get?requestId={requestId}": {
+    "/api/request/videos/AIclip/get/{requestId}": {
       "get": {
         "summary": "Get video processing result",
         "description": "Retrieve the result of a video processing request by request ID",
         "parameters": [
           {
             "name": "requestId",
-            "in": "query",
+            "in": "path",
             "required": true,
             "description": "ID of the video processing request",
             "schema": {
@@ -121,37 +121,7 @@
             }
           },
           "400": {
-            "description": "Bad Request: Missing required fields",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized: API key invalid",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Video request not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponse"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error: Please try again later or contact support",
+            "description": "Bad request",
             "content": {
               "application/json": {
                 "schema": {
@@ -162,7 +132,7 @@
           }
         }
       }
-    }
+    } 
   },
   "components": {
     "schemas": {
@@ -375,48 +345,7 @@
             "description": "Error message"
           }
         }
-      },
-       "NotFoundResponse": {
-        "type": "object",
-        "properties": {
-          "statusCode": {
-            "type": "integer",
-            "description": "Status code",
-            "example": 404
-          },
-          "status": {
-            "type": "string",
-            "description": "Status of the request",
-            "example": "error"
-          },
-          "message": {
-            "type": "string",
-            "description": "Error message",
-            "example": "Video request not found."
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "statusCode": {
-                "type": "integer",
-                "description": "Status code of the request",
-                "example": 404
-              },
-              "requestId": {
-                "type": "string",
-                "description": "Request ID",
-                "example": "668550d7a6e67e7599d96bac"
-              },
-              "requestStatus": {
-                "type": "string",
-                "description": "Current status of the request",
-                "example": "not_found"
-              }
-            }
-          }
-        }
       }
-    }
     },
     "securitySchemes": {
       "apiKeyAuth": {
@@ -426,4 +355,4 @@
       }
     }
   }
-
+}
