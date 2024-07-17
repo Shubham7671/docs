@@ -56,31 +56,51 @@
     {
       "group": "AI Auto Crop",
       "pages": [
-        "essentials/autocrop"
+        "api-reference/AIautocrop/gettingStarted",
+        "api-reference/AIautocrop/create",
+        "api-reference/AIautocrop/getStatus",
+        "api-reference/AIautocrop/getClip",
+        "api-reference/AIautocrop/webhook"
       ]
     },
-       {
+    {
       "group": "AI Text To Video",
       "pages": [
-        "essentials/texttovideo"
+        "api-reference/AItextToVideo/gettingStarted",
+        "api-reference/AItextToVideo/create",
+        "api-reference/AItextToVideo/getStatus",
+        "api-reference/AItextToVideo/getClip",
+        "api-reference/AItextToVideo/webhook"
       ]
     },
-      {
+    {
       "group": "AI BGM",
       "pages": [
-        "essentials/bgm"
+        "api-reference/AIbgm/gettingStarted",
+        "api-reference/AIbgm/create",
+        "api-reference/AIbgm/getStatus",
+        "api-reference/AIbgm/getClip",
+        "api-reference/AIbgm/webhook"
       ]
     },
-      {
+    {
       "group": "AI BRoll",
       "pages": [
-        "essentials/broll"
+        "api-reference/AIbroll/gettingStarted",
+        "api-reference/AIbroll/create",
+        "api-reference/AIbroll/getStatus",
+        "api-reference/AIbroll/getClip",
+        "api-reference/AIbroll/webhook"
       ]
     },
     {
       "group": "AI Subtitling",
       "pages": [
-        "essentials/subtitle"
+        "api-reference/AIsubtitle/gettingStarted",
+        "api-reference/AIsubtitle/create",
+        "api-reference/AIsubtitle/getStatus",
+        "api-reference/AIsubtitle/getClip",
+        "api-reference/AIsubtitle/webhook"
       ]
     },
     {
