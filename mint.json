@@ -81,6 +81,7 @@
         },
         {
           "group": "AI BRoll",
+          "icon":"broll",
           "pages": [
             "api-reference/AIbroll/gettingStarted",
             "api-reference/AIbroll/create",
@@ -91,12 +92,24 @@
         },
         {
           "group": "AI Subtitling",
+          "icon":"subtitle",
           "pages": [
             "api-reference/AIsubtitle/gettingStarted",
             "api-reference/AIsubtitle/create",
             "api-reference/AIsubtitle/getStatus",
             "api-reference/AIsubtitle/getClip",
             "api-reference/AIsubtitle/webhook"
+          ]
+        }
+          ,{
+          "group": "AI Text To Video",
+          "icon":"text",
+          "pages": [
+            "api-reference/AItextToVideo/gettingStarted",
+            "api-reference/AItextToVideo/create",
+            "api-reference/AItextToVideo/getStatus",
+            "api-reference/AItextToVideo/getClip",
+            "api-reference/AItextToVideo/webhook"
           ]
         }
       ]
