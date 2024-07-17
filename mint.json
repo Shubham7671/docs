@@ -46,7 +46,7 @@
     {
       "group": "AI Clipping",
       "pages": [
-        "api-reference/AIClipping/gettingStarted",
+        "api-reference/AIclipping/gettingStarted",
         "api-reference/AIclipping/create",
         "api-reference/AIclipping/getStatus",
         "api-reference/AIclipping/getClip",
