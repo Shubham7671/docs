@@ -81,7 +81,7 @@
         },
         {
           "group": "AI BRoll",
-          "icon":"broll",
+          "icon":"play",
           "pages": [
             "api-reference/AIbroll/gettingStarted",
             "api-reference/AIbroll/create",
@@ -92,7 +92,7 @@
         },
         {
           "group": "AI Subtitling",
-          "icon":"subtitle",
+          "icon":"list",
           "pages": [
             "api-reference/AIsubtitle/gettingStarted",
             "api-reference/AIsubtitle/create",
