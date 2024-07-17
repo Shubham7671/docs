@@ -32,12 +32,51 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Successful response",
+          "201": {
+            "description": "Request created successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/request/videos/AIclip/status/{requestId}": {
+      "get": {
+        "summary": "Check request status",
+        "description": "Check the processing status of a video request by request ID",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the video processing request",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request status retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusResponse"
                 }
               }
             }
@@ -75,13 +114,65 @@
       "SuccessResponse": {
         "type": "object",
         "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "Status code",
+            "example": 201
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the request",
+            "example": "success"
+          },
           "message": {
             "type": "string",
-            "description": "Success message"
+            "description": "Success message",
+            "example": "your request created successfully"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Request ID",
+            "example": "667bbc6973e392d3f7f6f620"
+          }
+        }
+      },
+      "StatusResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "Status code",
+            "example": 200
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the request",
+            "example": "success"
+          },
+          "message": {
+            "type": "string",
+            "description": "Status message",
+            "example": "your project is in processing state."
           },
           "data": {
             "type": "object",
-            "description": "Processed video data"
+            "properties": {
+              "statusCode": {
+                "type": "integer",
+                "description": "Status code of the request",
+                "example": 200
+              },
+              "requestId": {
+                "type": "string",
+                "description": "Request ID",
+                "example": "667bbc6973e392d3f7f6f620"
+              },
+              "requestStatus": {
+                "type": "string",
+                "description": "Current status of the request",
+                "example": "processing"
+              }
+            }
           }
         }
       },
