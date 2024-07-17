@@ -94,7 +94,7 @@
         }
       }
     },
-    "/api/request/aiclip/get": {
+    "/api/request/aiclip/get/{requestId}": {
       "get": {
         "summary": "Get video processing result",
         "description": "Retrieve the result of a video processing request by request ID",
