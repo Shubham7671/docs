@@ -377,7 +377,48 @@
             "description": "Error message"
           }
         }
+      },
+       "NotFoundResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "Status code",
+            "example": 404
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the request",
+            "example": "error"
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Video request not found."
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "statusCode": {
+                "type": "integer",
+                "description": "Status code of the request",
+                "example": 404
+              },
+              "requestId": {
+                "type": "string",
+                "description": "Request ID",
+                "example": "668550d7a6e67e7599d96bac"
+              },
+              "requestStatus": {
+                "type": "string",
+                "description": "Current status of the request",
+                "example": "not_found"
+              }
+            }
+          }
+        }
       }
+    }
     },
     "securitySchemes": {
       "apiKeyAuth": {
