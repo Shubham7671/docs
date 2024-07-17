@@ -44,78 +44,133 @@
       "pages": ["introduction", "gettingStarted"]
     },
     {
-      "group": "AI Clipping",
+      "group": "API References",
       "pages": [
-         {
-          "name": "Getting Started",
-          "url": "api-reference/AIclipping/gettingStarted"
+        {
+          "group": "AI Clipping",
+          "pages": [
+            {
+              "name": "Getting Started",
+              "url": "api-reference/AIclipping/gettingStarted"
+            },
+            {
+              "name": "Create",
+              "url": "api-reference/AIclipping/create"
+            },
+            {
+              "name": "Get Status",
+              "url": "api-reference/AIclipping/getStatus"
+            },
+            {
+              "name": "Get Clip",
+              "url": "api-reference/AIclipping/getClip"
+            },
+            {
+              "name": "Webhook",
+              "url": "api-reference/AIclipping/webhook"
+            }
+          ]
         },
         {
-          "name": "Create",
-          "url": "api-reference/AIclipping/create"
+          "group": "AI Auto Crop",
+          "pages": [
+            {
+              "name": "Getting Started",
+              "url": "api-reference/AIautocrop/gettingStarted"
+            },
+            {
+              "name": "Create",
+              "url": "api-reference/AIautocrop/create"
+            },
+            {
+              "name": "Get Status",
+              "url": "api-reference/AIautocrop/getStatus"
+            },
+            {
+              "name": "Get Clip",
+              "url": "api-reference/AIautocrop/getClip"
+            },
+            {
+              "name": "Webhook",
+              "url": "api-reference/AIautocrop/webhook"
+            }
+          ]
         },
         {
-          "name": "Get Status",
-          "url": "api-reference/AIclipping/getStatus"
+          "group": "AI BGM",
+          "pages": [
+            {
+              "name": "Getting Started",
+              "url": "api-reference/AIbgm/gettingStarted"
+            },
+            {
+              "name": "Create",
+              "url": "api-reference/AIbgm/create"
+            },
+            {
+              "name": "Get Status",
+              "url": "api-reference/AIbgm/getStatus"
+            },
+            {
+              "name": "Get Clip",
+              "url": "api-reference/AIbgm/getClip"
+            },
+            {
+              "name": "Webhook",
+              "url": "api-reference/AIbgm/webhook"
+            }
+          ]
         },
         {
-          "name": "Get Clip",
-          "url": "api-reference/AIclipping/getClip"
+          "group": "AI BRoll",
+          "pages": [
+            {
+              "name": "Getting Started",
+              "url": "api-reference/AIbroll/gettingStarted"
+            },
+            {
+              "name": "Create",
+              "url": "api-reference/AIbroll/create"
+            },
+            {
+              "name": "Get Status",
+              "url": "api-reference/AIbroll/getStatus"
+            },
+            {
+              "name": "Get Clip",
+              "url": "api-reference/AIbroll/getClip"
+            },
+            {
+              "name": "Webhook",
+              "url": "api-reference/AIbroll/webhook"
+            }
+          ]
         },
         {
-          "name": "Webhook",
-          "url": "api-reference/AIclipping/webhook"
+          "group": "AI Subtitling",
+          "pages": [
+            {
+              "name": "Getting Started",
+              "url": "api-reference/AIsubtitle/gettingStarted"
+            },
+            {
+              "name": "Create",
+              "url": "api-reference/AIsubtitle/create"
+            },
+            {
+              "name": "Get Status",
+              "url": "api-reference/AIsubtitle/getStatus"
+            },
+            {
+              "name": "Get Clip",
+              "url": "api-reference/AIsubtitle/getClip"
+            },
+            {
+              "name": "Webhook",
+              "url": "api-reference/AIsubtitle/webhook"
+            }
+          ]
         }
-      ]
-    },
-    {
-      "group": "AI Auto Crop",
-      "pages": [
-        "api-reference/AIautocrop/gettingStarted",
-        "api-reference/AIautocrop/create",
-        "api-reference/AIautocrop/getStatus",
-        "api-reference/AIautocrop/getClip",
-        "api-reference/AIautocrop/webhook"
-      ]
-    },
-    {
-      "group": "AI Text To Video",
-      "pages": [
-        "api-reference/AItextToVideo/gettingStarted",
-        "api-reference/AItextToVideo/create",
-        "api-reference/AItextToVideo/getStatus",
-        "api-reference/AItextToVideo/getClip",
-        "api-reference/AItextToVideo/webhook"
-      ]
-    },
-    {
-      "group": "AI BGM",
-      "pages": [
-        "api-reference/AIbgm/gettingStarted",
-        "api-reference/AIbgm/create",
-        "api-reference/AIbgm/getStatus",
-        "api-reference/AIbgm/getClip",
-        "api-reference/AIbgm/webhook"
-      ]
-    },
-    {
-      "group": "AI BRoll",
-      "pages": [
-        "api-reference/AIbroll/gettingStarted",
-        "api-reference/AIbroll/create",
-        "api-reference/AIbroll/getStatus",
-        "api-reference/AIbroll/getClip",
-        "api-reference/AIbroll/webhook"
-      ]
-    },
-    {
-      "group": "AI Subtitling",
-      "pages": [
-        "api-reference/AIsubtitle/gettingStarted",
-        "api-reference/AIsubtitle/create",
-        "api-reference/AIsubtitle/getStatus",
-        "api-reference/AIsubtitle/getClip",
-        "api-reference/AIsubtitle/webhook"
       ]
     }
   ],
