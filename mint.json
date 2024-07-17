@@ -46,7 +46,10 @@
     {
       "group": "AI Clipping",
       "pages": [
-        "essentials/AIClipping"
+        "essentials/AIClipping",
+        "api-reference/AIclipping/get",
+        "api-reference/AIclipping/create",
+        "api-reference/AIclipping/webhook"
       ]
     },
     {
