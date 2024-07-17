@@ -93,7 +93,46 @@
           }
         }
       }
-    }
+    },
+    "/api/request/videos/AIclip/get/{requestId}": {
+      "get": {
+        "summary": "Get video processing result",
+        "description": "Retrieve the result of a video processing request by request ID",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the video processing request",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request result retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    } 
   },
   "components": {
     "schemas": {
