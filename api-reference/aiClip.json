@@ -55,45 +55,75 @@
         }
       }
     },
-    "/api/request/videos/AIclip/status/{requestId}": {
-      "get": {
-        "summary": "Check request status",
-        "description": "Check the processing status of a video request by request ID",
-        "parameters": [
-          {
-            "name": "requestId",
-            "in": "path",
-            "required": true,
-            "description": "ID of the video processing request",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Request status retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/StatusResponse"
-                }
+     "/api/request/aiclip/status": {
+        "get": {
+          "summary": "Check request status",
+          "description": "Check the processing status of a video request by request ID",
+          "parameters": [
+            {
+              "name": "requestId",
+              "in": "query",
+              "required": true,
+              "description": "ID of the video processing request",
+              "schema": {
+                "type": "string"
               }
             }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+          ],
+          "responses": {
+            "200": {
+              "description": "Request status retrieved successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StatusResponseAI_clip_status"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request: Missing required fields",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponseMissing"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized: API key invalid",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Video request not found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundResponse404"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error: Please try again later or contact support",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse500"
+                  }
                 }
               }
             }
           }
         }
-      }
-    },
+      },
     "/api/request/aiclip/get": {
       "get": {
         "summary": "Get video processing result",
@@ -115,7 +145,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResultResponse"
+                  "$ref": "#/components/schemas/ResultResponseAI_clip_get"
                 }
               }
             }
@@ -145,7 +175,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponse"
+                  "$ref": "#/components/schemas/NotFoundResponse404"
                 }
               }
             }
@@ -205,7 +235,7 @@
           }
         }
       },
-      "StatusResponse": {
+      "StatusResponseAI_clip_get": {
         "type": "object",
         "properties": {
           "statusCode": {
@@ -415,6 +445,96 @@
               }
             }
           }
+      },
+
+      "StatusResponseAI_clip_status": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "Status code",
+            "example": 200
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the request",
+            "example": "success"
+          },
+          "message": {
+            "type": "string",
+            "description": "Status message",
+            "example": "your project is in completed state."
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "statusCode": {
+                "type": "integer",
+                "description": "Status code of the request",
+                "example": 200
+              },
+              "requestId": {
+                "type": "string",
+                "description": "Request ID",
+                "example": "668550d7a6e67e7599d96bac"
+              },
+              "requestStatus": {
+                "type": "string",
+                "description": "Current status of the request",
+                "example": "completed"
+              }
+            }
+          }
+        }
+      },
+      "ErrorResponseAI_clip_status": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      },
+      "NotFoundResponse404": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "Status code",
+            "example": 404
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the request",
+            "example": "error"
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Video request not found."
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "statusCode": {
+                "type": "integer",
+                "description": "Status code of the request",
+                "example": 404
+              },
+              "requestId": {
+                "type": "string",
+                "description": "Request ID",
+                "example": "668550d7a6ee7599d96bac"
+              },
+              "requestStatus": {
+                "type": "string",
+                "description": "Current status of the request",
+                "example": "not_found"
+              }
+            }
+          }
+        }
       }
 
     },
