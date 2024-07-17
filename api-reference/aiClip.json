@@ -215,6 +215,128 @@
           }
         }
       },
+      "ResultResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "Status code",
+            "example": 200
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the request",
+            "example": "success"
+          },
+          "message": {
+            "type": "string",
+            "description": "Status message",
+            "example": "your project is in success state."
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "projectType": {
+                "type": "string",
+                "description": "Type of the project",
+                "example": "AI_CLIP"
+              },
+              "totalTrims": {
+                "type": "integer",
+                "description": "Total number of trims",
+                "example": 2
+              },
+              "status": {
+                "type": "string",
+                "description": "Current status of the request",
+                "example": "success"
+              },
+              "trims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "description": "ID of the trim",
+                      "example": "667a8f5c3b1b2648f3f10329"
+                    },
+                    "s3Url": {
+                      "type": "string",
+                      "description": "S3 URL of the trim",
+                      "example": "https://qr-s3-file-upload.s3.ap-south-1.amazonaws.com/666c2f1872a9b4af53e74f5b/667a8f26a9f881db6bb3f1d9/667a8f5c3b1b2648f3f10329.mp4"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Title of the trim",
+                      "example": "Struggles of Learning English"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Status of the trim",
+                      "example": "completed"
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": ["English", "Speaking", "Frustration", "Understanding", "Communication"]
+                    },
+                    "caption": {
+                      "type": "string",
+                      "description": "Caption of the trim",
+                      "example": "Overcoming the Language Barrier"
+                    },
+                    "virality_score": {
+                      "type": "integer",
+                      "description": "Virality score of the trim",
+                      "example": 95
+                    },
+                    "virality_score_reason": {
+                      "type": "string",
+                      "description": "Reason for the virality score",
+                      "example": "Many people can relate to the frustration of understanding a language but struggling to speak it fluently. This reel captures that struggle and offers hope and encouragement to viewers."
+                    },
+                    "processedDate": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Date and time when the trim was processed",
+                      "example": "2024-06-25T09:36:48.985Z"
+                    },
+                    "trimThumbnailUrl": {
+                      "type": "string",
+                      "description": "Thumbnail URL of the trim",
+                      "example": "https://qr-s3-file-upload.s3.ap-south-1.amazonaws.com/666c2f1872a9b4af53e74f5b/667a8f26a9f881db6bb3f1d9/667a8f5c3b1b2648f3f10329.jpg"
+                    }
+                  }
+                }
+              },
+              "subtitleTemplate": {
+                "type": "string",
+                "description": "Template used for subtitles",
+                "example": "impact"
+              },
+              "callBackUrl": {
+                "type": "string",
+                "description": "Callback URL",
+                "example": "https://s267iebfrnjsb63psrp2sezdky0hkrxb.lambda-url.us-east-1.on.aws/"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Date and time when the request was created",
+                "example": "2024-06-25T09:34:30.912Z"
+              },
+              "requestId": {
+                "type": "string",
+                "description": "Request ID",
+                "example": "667a8f26a9f881db6bb3f1d9"
+              }
+            }
+          }
+        }
+      },
       "ErrorResponse": {
         "type": "object",
         "properties": {
