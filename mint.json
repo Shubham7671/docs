@@ -46,17 +46,38 @@
     {
       "group": "AI Clipping",
       "pages": [
-        "essentials/AIClipping",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "essentials/AIClipping"
       ]
     },
     {
-      "group": "API Documentation",
-      "pages": ["/introduction"]
+      "group": "AI Auto Crop",
+      "pages": [
+        "essentials/autocrop"
+      ]
+    },
+       {
+      "group": "AI Text To Video",
+      "pages": [
+        "essentials/texttovideo"
+      ]
+    },
+      {
+      "group": "AI BGM",
+      "pages": [
+        "essentials/bgm"
+      ]
+    },
+      {
+      "group": "AI BRoll",
+      "pages": [
+        "essentials/broll"
+      ]
+    },
+    {
+      "group": "AI Subtitling",
+      "pages": [
+        "essentials/subtitle"
+      ]
     },
     {
       "group": "Endpoint Examples",
