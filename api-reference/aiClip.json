@@ -94,7 +94,7 @@
         }
       }
     },
-    "/api/request/aiclip/get/{requestId}": {
+    "/api/request/aiclip/get": {
       "get": {
         "summary": "Get video processing result",
         "description": "Retrieve the result of a video processing request by request ID",
@@ -121,7 +121,37 @@
             }
           },
           "400": {
-            "description": "Bad request",
+            "description": "Bad Request: Missing required fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized: API key invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Video request not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error: Please try again later or contact support",
             "content": {
               "application/json": {
                 "schema": {
@@ -132,7 +162,9 @@
           }
         }
       }
-    } 
+    }
+
+
   },
   "components": {
     "schemas": {
