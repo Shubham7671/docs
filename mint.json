@@ -48,7 +48,7 @@
       "pages": [
         {
           "group": "AI Clipping",
-          "icon": "animated_images",
+          "icon": "image",
           "pages": [
             "api-reference/AIclipping/gettingStarted",
             "api-reference/AIclipping/create",
