@@ -100,7 +100,7 @@
     },
     {
       "group": "Callback/Webhook",
-      "icon": "callback",
+      "icon": "info",
       "pages": ["callback"]
     }
 
