@@ -62,7 +62,7 @@
         "parameters": [
           {
             "name": "requestId",
-            "in": "path",
+            "in": "query",
             "required": true,
             "description": "ID of the video processing request",
             "schema": {
@@ -101,7 +101,7 @@
         "parameters": [
           {
             "name": "requestId",
-            "in": "path",
+            "in": "query",
             "required": true,
             "description": "ID of the video processing request",
             "schema": {
