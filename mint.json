@@ -70,7 +70,7 @@
         },
         {
           "group": "AI BGM",
-          "icon":"music_note",
+          "icon":"music",
           "pages": [
             "api-reference/AIbgm/gettingStarted",
             "api-reference/AIbgm/create",
