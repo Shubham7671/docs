@@ -16,7 +16,7 @@
     }
   ],
   "paths": {
-    "/api/request/videos/AIclip": {
+    "/api/request/aiclip": {
       "post": {
         "summary": "Request video processing",
         "description": "Request to process a video from a YouTube URL and receive the result via a callback URL",
