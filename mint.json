@@ -48,6 +48,7 @@
       "pages": [
         {
           "group": "AI Clipping",
+          "icon": "fas fa-video",
           "pages": [
             "api-reference/AIclipping/gettingStarted",
             "api-reference/AIclipping/create",
