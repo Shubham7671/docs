@@ -49,6 +49,11 @@
         {
           "group": "AI Clipping",
           "pages": [
+             {
+        "name": "Contact us",
+        "icon": "envelope",
+        "url": "api-reference/AIclipping/gettingStarted"
+    },
             "api-reference/AIclipping/gettingStarted",
             "api-reference/AIclipping/create",
             "api-reference/AIclipping/getStatus",
