@@ -1,128 +1,53 @@
 {
-  "aiClip": "3.0.1",
+  "openapi": "3.0.1",
   "info": {
-    "title": "AI Clipping API",
-    "description": "AI Clipping is an advanced tool designed to transform long-form videos into short, captivating clips by automatically detecting and extracting the most engaging moments. It is ideal for creating highlight reels, trailers, or social media snippets, ensuring that your audience stays engaged with the best parts of your content.",
-    "license": {
-      "name": "MIT"
-    },
+    "title": "Video Processing API",
+    "description": "API for processing video clips from YouTube URLs",
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "https://qr-be-api-vvafsac2oa-uc.a.run.app/api/request/videos"
+      "url": "https://qr-be-api-vvafsac2oa-uc.a.run.app"
     }
   ],
   "security": [
     {
-      "bearerAuth": [
-      ]
+      "apiKeyAuth": []
     }
   ],
   "paths": {
-    "/AIclip": {
-      "get": {
-        "description": "Check Status of your project by request id",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
+    "/api/request/videos/AIclip": {
       "post": {
-        "description": "Creates a request",
+        "summary": "Request video processing",
+        "description": "Request to process a video from a YouTube URL and receive the result via a callback URL",
         "requestBody": {
-          "description": "",
+          "description": "Request payload for video processing",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/VideoRequest"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
-            "description": "plant response",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Plant"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Bad request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -133,63 +58,48 @@
   },
   "components": {
     "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
+      "VideoRequest": {
         "type": "object",
         "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
+          "videoUrl": {
+            "type": "string",
+            "description": "YouTube video URL"
           },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
+          "callBackUrl": {
+            "type": "string",
+            "description": "Callback URL to receive the processed video result"
+          }
+        },
+        "required": ["videoUrl", "callBackUrl"]
+      },
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Success message"
+          },
+          "data": {
+            "type": "object",
+            "description": "Processed video data"
           }
         }
       },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
-      },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
+      "ErrorResponse": {
         "type": "object",
         "properties": {
           "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
+            "type": "string",
+            "description": "Error message"
           }
         }
       }
     },
     "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
       }
     }
   }
