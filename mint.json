@@ -97,7 +97,12 @@
           ]
         }
       ]
+    },
+    {
+      "group": "Callback/Webhook",
+      "pages": ["callback"]
     }
+
   ],
   "footerSocials": {
     "x": "https://x.com/QuickReelHQ",
