@@ -5,7 +5,7 @@
     "dark": "/logo/quickreelAPIlogo.png",
     "light": "/logo/quickreelAPIlogo.png"
   },
-  "favicon": "https://app.quickreel.io/static/media/q-logo.4ed37bc24006d63160df.png",
+  "favicon": "/images/favicon.png",
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
@@ -59,7 +59,7 @@
         },
         {
           "group": "AI Auto Crop",
-          "icon":"crop",
+          "icon": "crop",
           "pages": [
             "api-reference/AIautocrop/gettingStarted",
             "api-reference/AIautocrop/create",
@@ -70,7 +70,7 @@
         },
         {
           "group": "AI BGM",
-          "icon":"music",
+          "icon": "music",
           "pages": [
             "api-reference/AIbgm/gettingStarted",
             "api-reference/AIbgm/create",
@@ -81,7 +81,7 @@
         },
         {
           "group": "AI BRoll",
-          "icon":"play",
+          "icon": "play",
           "pages": [
             "api-reference/AIbroll/gettingStarted",
             "api-reference/AIbroll/create",
@@ -92,7 +92,7 @@
         },
         {
           "group": "AI Subtitling",
-          "icon":"list",
+          "icon": "list",
           "pages": [
             "api-reference/AIsubtitle/gettingStarted",
             "api-reference/AIsubtitle/create",
@@ -100,10 +100,10 @@
             "api-reference/AIsubtitle/getClip",
             "api-reference/AIsubtitle/webhook"
           ]
-        }
-          ,{
+        },
+        {
           "group": "AI Text To Video",
-          "icon":"text",
+          "icon": "text",
           "pages": [
             "api-reference/AItextToVideo/gettingStarted",
             "api-reference/AItextToVideo/create",
@@ -119,7 +119,6 @@
       "icon": "info",
       "pages": ["callback"]
     }
-
   ],
   "footerSocials": {
     "x": "https://x.com/QuickReelHQ",
