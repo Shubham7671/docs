@@ -5,7 +5,7 @@
     "dark": "/logo/quickreelAPIlogo.png",
     "light": "/logo/quickreelAPIlogo.png"
   },
-  "favicon": "/logo/quickreelAPIlogo.png",
+  "favicon": "https://app.quickreel.io/static/media/q-logo.4ed37bc24006d63160df.png",
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
