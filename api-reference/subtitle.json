@@ -31,12 +31,12 @@
                   "videoUrl": {
                     "type": "string",
                     "description": "The URL of the video to process",
-                    "example": "https://qr-be-file-upload-us-east-1.s3.us-east-1.amazonaws.com/66854d2da6e67e7599d96ba7/668550d7a6e67e7599d96bac/668550ff55367b17ce1d6dc2_autocrop.mp4"
+                    "example": "https://qr-be-file-upload-us-east-1.s3.us-east-1.amazonaws.com/66854d2rop.mp4"
                   },
                   "callBackUrl": {
                     "type": "string",
                     "description": "The callback URL to notify when processing is complete",
-                    "example": "https://s267iebfrnjsb63psrp2sezdky0hkrxb.lambda-url.us-east-1.on.aws/"
+                    "example": "https://s267iebfrnjsb63psrp2sezdky0h.us-east-1.on.aws/"
                   },
                   "subtitleTemplate": {
                     "type": "string",
@@ -80,12 +80,12 @@
               }
             }
           },
-          "404": {
-            "description": "Video request not found",
+          "415": {
+            "description": "Unsupported Media Type: The provided video URL is not a downloadable video link",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponse404"
+                  "$ref": "#/components/schemas/UnsupportedMediaTypeResponse"
                 }
               }
             }
@@ -560,6 +560,23 @@
             "type": "string",
             "description": "Error message",
             "example": "Internal Server Error: Please try again later or contact support"
+          }
+        }
+      },
+      "UnsupportedMediaTypeResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "example": 415
+          },
+          "status": {
+            "type": "string",
+            "example": "error"
+          },
+          "message": {
+            "type": "string",
+            "example": "The provided video URL is not a downloadable video link"
           }
         }
       }

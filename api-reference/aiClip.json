@@ -62,12 +62,12 @@
               }
             }
           },
-          "404": {
-            "description": "Video request not found",
+          "415": {
+            "description": "Unsupported Media Type: The provided video URL is not a downloadable video link",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponse404"
+                  "$ref": "#/components/schemas/UnsupportedMediaTypeResponse"
                 }
               }
             }
@@ -542,6 +542,23 @@
             "type": "string",
             "description": "Error message",
             "example": "Internal Server Error: Please try again later or contact support"
+          }
+        }
+      },
+      "UnsupportedMediaTypeResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "example": 415
+          },
+          "status": {
+            "type": "string",
+            "example": "error"
+          },
+          "message": {
+            "type": "string",
+            "example": "The provided video URL is not a downloadable video link"
           }
         }
       }
