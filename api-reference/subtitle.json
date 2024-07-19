@@ -289,6 +289,10 @@
           "callBackUrl": {
             "type": "string",
             "description": "Callback URL to receive the processed video result"
+          },
+          "subtitleTemplate": {
+            "type": "string",
+            "description": "Template to be used for subtitles"
           }
         },
         "required": ["videoUrl", "callBackUrl", "subtitleTemplate"]
