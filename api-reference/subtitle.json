@@ -19,7 +19,7 @@
     "/api/request/subtitle": {
       "post": {
         "summary": "Request video processing",
-        "description": "Request to process a video from a YouTube URL and receive the result via a callback URL",
+        "description": "",
         "requestBody": {
           "description": "Request payload for video processing",
           "required": true,
@@ -231,14 +231,14 @@
         "properties": {
           "videoUrl": {
             "type": "string",
-            "description": "YouTube video URL"
+            "description": "video URL"
           },
           "callBackUrl": {
             "type": "string",
             "description": "Callback URL to receive the processed video result"
           }
         },
-        "required": ["videoUrl", "callBackUrl"]
+        "required": ["videoUrl", "callBackUrl", "subtitleTemplate"]
       },
       "SuccessResponse": {
         "type": "object",
@@ -261,7 +261,7 @@
           "requestId": {
             "type": "string",
             "description": "Request ID",
-            "example": "667bbc6973e392d3f7f6f620"
+            "example": "667bbc6973f6f620"
           }
         }
       },
@@ -309,7 +309,7 @@
                     "_id": {
                       "type": "string",
                       "description": "ID of the trim",
-                      "example": "667a8f5c3b1b2648f3f10329"
+                      "example": "667a8f52648f3f10329"
                     },
                     "s3Url": {
                       "type": "string",
@@ -387,7 +387,7 @@
               "requestId": {
                 "type": "string",
                 "description": "Request ID",
-                "example": "667a8f26a9f881db6bb3f1d9"
+                "example": "667a8f21db6bb3f1d9"
               }
             }
           }
