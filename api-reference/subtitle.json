@@ -189,11 +189,46 @@
         ],
         "responses": {
           "200": {
-            "description": "Request result retrieved successfully",
+            "description": "Request completed successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResultResponseAI_clip_get"
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "your project is in completed state."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": {
+                          "type": "integer",
+                          "example": 200
+                        },
+                        "requestId": {
+                          "type": "string",
+                          "example": "66992fe51eb96c8c8284d62d"
+                        },
+                        "requestStatus": {
+                          "type": "string",
+                          "example": "completed"
+                        },
+                        "videoUrl": {
+                          "type": "string",
+                          "example": "https://qr-be-file-upload-us-east-1.s3.amazs.com/667d64fe5ac4722e45b55f07/669967cec0d2f.mp4"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
