@@ -10,6 +10,7 @@
       "url": "https://qr-be-api-vvafsac2oa-uc.a.run.app"
     }
   ],
+  
   "security": [
     {
       "apiKeyAuth": []
