@@ -42,7 +42,7 @@
               }
             }
           },
-                   "400": {
+          "400": {
             "description": "Bad Request: Missing required fields",
             "content": {
               "application/json": {
@@ -314,7 +314,7 @@
                     "s3Url": {
                       "type": "string",
                       "description": "S3 URL of the trim",
-                      "example": "https://qr-s3-file-upload.s3.ap-south-1.amazonaws.com/666c2f1872a9b4af53e74f5b/667a8f26a9f881db6bb3f1d9/667a8f5c3b1b2648f3f10329.mp4"
+                      "example": "https://qr-s3-file-upload.s3.ap-south-1.amazonaws.com/666c2f1872a90329.mp4"
                     },
                     "title": {
                       "type": "string",
@@ -363,7 +363,7 @@
                     "trimThumbnailUrl": {
                       "type": "string",
                       "description": "Thumbnail URL of the trim",
-                      "example": "https://qr-s3-file-upload.s3.ap-south-1.amazonaws.com/666c2f1872a9b4af53e74f5b/667a8f26a9f881db6bb3f1d9/667a8f5c3b1b2648f3f10329.jpg"
+                      "example": "https://qr-s3-file-upload.s3.ap-south-110329.jpg"
                     }
                   }
                 }
@@ -376,7 +376,7 @@
               "callBackUrl": {
                 "type": "string",
                 "description": "Callback URL",
-                "example": "https://s267iebfrnjsb63psrp2sezdky0hkrxb.lambda-url.us-east-1.on.aws/"
+                "example": "https://s267iebfrnjsb63psrp2sezdky0hkrxl.us-east-1.on.aws/"
               },
               "createdAt": {
                 "type": "string",

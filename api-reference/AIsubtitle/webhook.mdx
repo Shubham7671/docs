@@ -1,5 +1,89 @@
 ---
-title: 'Webhook'
-
-description: 'Description of your new file.'
+title: 'Callback Response'
+description: 'Using Callbacks to Return Response to Your Server'
+icon: 'webhook'
 ---
+
+
+### Callback Response
+When Quickreel completes processing your request, it sends a callback response to the URL specified in the `callBackUrl` parameter. Below is an example of the response you will receive:
+
+For more details on handling callback responses, refer to the [Callback Intoduction page](https://quickreel-8ab1b997.mintlify.app/callback) in the documentation.
+
+```json
+{
+    "statusCode": 200,
+    "status": "success",
+    "message": "your project is in success state.",
+    "data": {
+        "projectType": "AI_CLIP",
+        "totalTrims": 2,
+        "status": "success",
+        "trims": [
+            {
+                "_id": "667a8f5c3b1b2648f3f10329",
+                "s3Url": "https://qr-s3-file-upload.s3.ap-south-1.amazonaws.com/666cf1d9/667a8f5c3.mp4",
+                "title": "Struggles of Learning English",
+                "status": "completed",
+                "tags": [
+                    "English",
+                    "Speaking",
+                    "Frustration",
+                    "Understanding",
+                    "Communication"
+                ],
+                "caption": "Overcoming the Language Barrier",
+                "virality_score": 95,
+                "virality_score_reason": "Many people can relate to the frustration of understanding a language but struggling to speak it fluently. This reel captures that struggle and offers hope and encouragement to viewers.",
+                "processedDate": "2024-06-25T09:36:48.985Z",
+                "trimThumbnailUrl": "https://qr-s3-file-upload.s3.ap-south-1.amazonaws.com/329.jpg"
+            },
+            {
+                "_id": "667a8f5d3b1b2648f3f1032e",
+                "s3Url": "https://qr-s3-file-upload.s3.ap-south-1.amazonaws.com/666c2f18648f3f1032e.mp4",
+                "title": "Scaling English Proficiency",
+                "status": "completed",
+                "tags": [
+                    "attitude",
+                    "language barrier",
+                    "communication"
+                ],
+                "caption": "Change your attitude and overcome the language barrier",
+                "virality_score": 95,
+                "virality_score_reason": "Inspirational message about overcoming challenges and improving communication skills",
+                "processedDate": "2024-06-25T09:36:39.976Z",
+                "trimThumbnailUrl": "https://qr-s3-file-upload.s3.ap-south-1.amazonaws.com/666c2f1872a9b4af53e74f5b/667a8f26a9f881db2e.jpg"
+            }
+        ],
+        "subtitleTemplate": "impact",
+        "callBackUrl": "https://s267iebfrnjsb63psrpdky0hkrxbl.us-east-1.on.aws/",
+        "createdAt": "2024-06-25T09:34:30.912Z",
+        "requestId": "667a8f26a9f881db6bb3f1d9"
+    }
+}
+```
+
+**Response Attributes:**
+
+- `statusCode`: The HTTP status code indicating the result of the request.
+- `status`: The status of the request.
+- `message`: A message indicating the state of the project.
+- `data`: An object containing detailed information about the project.
+  - `projectType`: The type of the project, e.g., "AI_CLIP".
+  - `totalTrims`: The total number of trims generated.
+  - `status`: The status of the trims.
+  - `trims`: An array containing details of each trim.
+    - `_id`: The unique identifier of the trim.
+    - `s3Url`: The URL to access the trim on S3.
+    - `title`: The title of the trim.
+    - `status`: The status of the trim.
+    - `tags`: An array of tags associated with the trim.
+    - `caption`: The caption of the trim.
+    - `virality_score`: The virality score of the trim.
+    - `virality_score_reason`: The reason for the virality score.
+    - `processedDate`: The date and time the trim was processed.
+    - `trimThumbnailUrl`: The URL to access the thumbnail of the trim.
+  - `subtitleTemplate`: The subtitle template used.
+  - `callBackUrl`: The callback URL provided in the request.
+  - `createdAt`: The date and time the request was created.
+  - `requestId`: The unique identifier of the request.
