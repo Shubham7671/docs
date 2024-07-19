@@ -72,33 +72,21 @@
           "group": "AI Auto Crop",
           "icon": "crop",
           "pages": [
-            "api-reference/AIautocrop/gettingStarted",
-            "api-reference/AIautocrop/create",
-            "api-reference/AIautocrop/getStatus",
-            "api-reference/AIautocrop/getClip",
-            "api-reference/AIautocrop/webhook"
+            "api-reference/AIautocrop/gettingStarted"
           ]
         },
         {
           "group": "AI BGM",
           "icon": "music",
           "pages": [
-            "api-reference/AIbgm/gettingStarted",
-            "api-reference/AIbgm/create",
-            "api-reference/AIbgm/getStatus",
-            "api-reference/AIbgm/getClip",
-            "api-reference/AIbgm/webhook"
+            "api-reference/AIbgm/gettingStarted"
           ]
         },
         {
           "group": "AI BRoll",
           "icon": "play",
           "pages": [
-            "api-reference/AIbroll/gettingStarted",
-            "api-reference/AIbroll/create",
-            "api-reference/AIbroll/getStatus",
-            "api-reference/AIbroll/getClip",
-            "api-reference/AIbroll/webhook"
+            "api-reference/AIbroll/gettingStarted"
           ]
         },
 
@@ -106,11 +94,7 @@
           "group": "AI Text To Video",
           "icon": "text",
           "pages": [
-            "api-reference/AItextToVideo/gettingStarted",
-            "api-reference/AItextToVideo/create",
-            "api-reference/AItextToVideo/getStatus",
-            "api-reference/AItextToVideo/getClip",
-            "api-reference/AItextToVideo/webhook"
+            "api-reference/AItextToVideo/gettingStarted"
           ]
         }
       ]
