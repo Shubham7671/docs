@@ -236,6 +236,10 @@
           "callBackUrl": {
             "type": "string",
             "description": "Callback URL to receive the processed video result"
+          },
+           "videoLanguage": {
+            "type": "string",
+            "description": "Language of the video (optional)"
           }
         },
         "required": ["videoUrl", "callBackUrl"]
