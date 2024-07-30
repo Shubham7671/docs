@@ -22,7 +22,6 @@
         "description": "",
         "requestBody": {
           "description": "Request payload for video processing",
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
