@@ -39,12 +39,12 @@
                   },
                   "subtitleTemplate": {
                     "type": "string",
-                    "description": "Choose a subtitle template (default Impact will be added). Available Template : impact, pop, productive,typewritter,fade,beast",
+                    "description": "Choose a subtitle template (default Impact will be added).Choose from available Template: impact, pop, productive, typewritter, fade, beast .",
                     "example": "impact"
                   },
            "subtitleLanguage": {
             "type": "string",
-            "description": "Choose your subtitle language (default it will auto detect).  choose from available supported language (optional): Bulgarian, Catalan, Chinese (Mandarin, Simplified),Chinese (Mandarin, Traditional), Czech, Danish, Dutch,English, Estonian, Finnish, Flemish, French, German,German (Switzerland), Greek, Hindi, Hungarian, Indonesian,Italian, Japanese, Korean, Latvian, Lithuanian, Malay,Multilingual (Spanish + English), Norwegian, Polish,Portuguese, Romanian, Russian, Slovak, Spanish, Swedish,Thai, Turkish, Ukrainian, Vietnamese (default it will auto detect)."
+            "description": "Choose your subtitle language (default it will auto detect).  Choose from available supported language (optional): Bulgarian, Catalan, Chinese (Mandarin, Simplified),Chinese (Mandarin, Traditional), Czech, Danish, Dutch,English, Estonian, Finnish, Flemish, French, German,German (Switzerland), Greek, Hindi, Hungarian, Indonesian,Italian, Japanese, Korean, Latvian, Lithuanian, Malay,Multilingual (Spanish + English), Norwegian, Polish,Portuguese, Romanian, Russian, Slovak, Spanish, Swedish,Thai, Turkish, Ukrainian, Vietnamese (default it will auto detect)."
           }
                 },
                 "required": ["videoUrl", "callBackUrl", "subtitleTemplate"]
