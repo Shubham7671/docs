@@ -22,7 +22,6 @@
         "description": "",
         "requestBody": {
           "description": "Request payload for video processing",
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -40,9 +39,13 @@
                   },
                   "subtitleTemplate": {
                     "type": "string",
-                    "description": "The subtitle template to apply",
-                    "example": "productive"
-                  }
+                    "description": "Choose a subtitle template (default Impact will be added). Pass as false to skip.  (optional)",
+                    "example": "impact"
+                  },
+           "subtitleLanguage": {
+            "type": "string",
+            "description": "Choose your language  from the list Bulgarian, Catalan, Chinese (Mandarin, Simplified),Chinese (Mandarin, Traditional), Czech, Danish, Dutch,English, Estonian, Finnish, Flemish, French, German,German (Switzerland), Greek, Hindi, Hungarian, Indonesian,Italian, Japanese, Korean, Latvian, Lithuanian, Malay,Multilingual (Spanish + English), Norwegian, Polish,Portuguese, Romanian, Russian, Slovak, Spanish, Swedish,Thai, Turkish, Ukrainian, Vietnamese (default it will auto detect). (optional)"
+          }
                 },
                 "required": ["videoUrl", "callBackUrl", "subtitleTemplate"]
               }
