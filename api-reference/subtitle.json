@@ -115,7 +115,6 @@
             "name": "requestId",
             "in": "query",
             "required": true,
-            "example":"6564615649545h65564",
             "description": "ID of the video processing request",
             "schema": {
               "type": "string"
