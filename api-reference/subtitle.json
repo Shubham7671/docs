@@ -39,7 +39,7 @@
                   },
                   "subtitleTemplate": {
                     "type": "string",
-                    "description": "Choose a subtitle template (default Impact will be added).Choose from available Template: impact, pop, productive, typewritter, fade, beast .",
+                    "description": "Choose a subtitle template (default Impact will be added).Choose from available Template: impact, pop, productive, typewriter, fade, beast .",
                     "example": "impact"
                   },
            "subtitleLanguage": {

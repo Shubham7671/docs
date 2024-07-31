@@ -238,7 +238,7 @@
           },
            "subtitleTemplate": {
             "type": "string",
-            "description": "Choose a subtitle template (default Impact will be added). Pass as false to skip the template. Choose from available Template (optional): impact, pop, productive, typewritter, fade, beast ."
+            "description": "Choose a subtitle template (default Impact will be added). Pass as false to skip the template. Choose from available Template (optional): impact, pop, productive, typewriter, fade, beast ."
           },
            "videoLanguage": {
             "type": "string",
