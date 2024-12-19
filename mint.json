@@ -47,13 +47,11 @@
       "group": "API References",
       "pages": [
         {
-          "group": "AI Clipping",
+          "group": "AI Clip",
           "icon": "image",
           "pages": [
-            "api-reference/AIclipping/gettingStarted",
+            "api-reference/AIclipping/introduction",
             "api-reference/AIclipping/create",
-            "api-reference/AIclipping/getStatus",
-            "api-reference/AIclipping/getClip",
             "api-reference/AIclipping/webhook"
           ]
         },
@@ -61,32 +59,38 @@
           "group": "AI Subtitling",
           "icon": "list",
           "pages": [
-            "api-reference/AIsubtitle/gettingStarted",
+            "api-reference/AIsubtitle/introduction",
             "api-reference/AIsubtitle/create",
-            "api-reference/AIsubtitle/getStatus",
-            "api-reference/AIsubtitle/getClip",
+            "api-reference/AIsubtitle/subtitleStyle",
             "api-reference/AIsubtitle/webhook"
-          ]
-        },
-        {
-          "group": "AI Auto Crop",
-          "icon": "crop",
-          "pages": [
-            "api-reference/AIautocrop/gettingStarted"
           ]
         },
         {
           "group": "AI BGM",
           "icon": "music",
           "pages": [
-            "api-reference/AIbgm/gettingStarted"
+            "api-reference/AIbgm/introduction",
+            "api-reference/AIbgm/create",
+            "api-reference/AIbgm/webhook"
           ]
         },
         {
-          "group": "AI BRoll",
+          "group": "AI Broll",
           "icon": "play",
           "pages": [
-            "api-reference/AIbroll/gettingStarted"
+            "api-reference/AIbroll/introduction",
+            "api-reference/AIbroll/create",
+            "api-reference/AIbroll/webhook"
+          ]
+        },
+        {
+          "group": "AI Text To Voice",
+          "icon": "text",
+          "pages": [
+            "api-reference/tts/introduction",
+            "api-reference/tts/voices",
+            "api-reference/tts/create",
+            "api-reference/tts/webhook"
           ]
         },
 
@@ -94,7 +98,10 @@
           "group": "AI Text To Video",
           "icon": "text",
           "pages": [
-            "api-reference/AItextToVideo/gettingStarted"
+            "api-reference/ttv/introduction",
+            "api-reference/ttv/create",
+            "api-reference/ttv/visualStyle",
+            "api-reference/ttv/webhook"
           ]
         }
       ]

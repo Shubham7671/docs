@@ -1,0 +1,41 @@
+---
+title: "Introduction"
+description: "Analyzes the context and mood of a video to add appropriate background music, enhancing its engagement. Enhances video content for marketing, entertainment, or educational purposes."
+icon: "map"
+---
+
+## Overview
+
+The AI Background Music (BGM) feature is designed to enhance your video content by adding appropriate background music. This tool analyzes the emotional tone and context of your video to automatically select and integrate suitable background music. This enhances viewer engagement and enriches the overall experience, making it ideal for:
+
+## How to Create a Video Clip
+
+**Base URL:** `https://qr-be-api-vvafsac2oa-uc.a.run.app/api/v2`
+
+**Endpoint:** `/bgm`
+
+**Method:** `POST`
+
+**Headers**
+
+```markdown
+Content-Type: application/json
+x-api-key: <your_api_key>
+```
+
+**Request Body Parameters**
+
+| Key        | Data Type | Description                                              | Mandatory |
+| ---------- | --------- | -------------------------------------------------------- | --------- |
+| videoUrl   | STRING    | URL of the source video (YouTube link or video file URL) | Required  |
+| webhookUrl | STRING    | URL to receive processing updates                        | Required  |
+
+### Advanced Use Cases
+
+The AI-powered background music (BGM) feature analyzes the emotional tone and context of your video content to automatically select and integrate suitable background music. This enhances viewer engagement and enriches the overall experience, making it ideal for:
+
+- **Marketing Videos:** Elevate your brand message with music that resonates with your audience.
+- **Entertainment Content:** Add depth and emotion to your storytelling.
+- **Educational Materials:** Maintain viewer interest and emphasize key points with appropriate audio cues.
+
+By leveraging AI emotion detection, the BGM tool ensures that the music complements the video's mood, creating a seamless and immersive experience.

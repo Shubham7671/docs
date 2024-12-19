@@ -1,0 +1,82 @@
+---
+title: "Introduction"
+description: "Automatically generates and adds relevant B-roll footage to your videos, enhancing visual storytelling and engagement."
+icon: "map"
+---
+
+## Overview
+
+AI BRoll is an advanced feature that automatically generates and inserts relevant B-roll footage into your videos. This enhances visual storytelling and maintains viewer engagement by providing complementary visuals that support your main content.
+
+## How to Create a Video Clip
+
+**Base URL:** `https://qr-be-api-vvafsac2oa-uc.a.run.app/api/v2`
+
+**Endpoint:** `/bgm`
+
+**Method:** `POST`
+
+**Headers**
+
+```markdown
+Content-Type: application/json
+x-api-key: <your_api_key>
+```
+
+**Request Body Parameters**
+
+| Key        | Data Type | Description                                              | Mandatory |
+| ---------- | --------- | -------------------------------------------------------- | --------- |
+| videoUrl   | STRING    | URL of the source video (YouTube link or video file URL) | Required  |
+| webhookUrl | STRING    | URL to receive processing updates                        | Required  |
+
+<CardGroup cols={2}>
+  <Card title="Smart Context Analysis" icon="brain">
+    Our AI analyzes your video content to understand context and automatically
+    selects relevant B-roll footage.
+  </Card>
+  <Card title="Seamless Integration" icon="puzzle-piece">
+    B-roll clips are seamlessly integrated into your video with smooth
+    transitions.
+  </Card>
+  <Card title="High-Quality Library" icon="photo-film">
+    Access to a vast library of professional-grade stock footage and B-roll
+    content.
+  </Card>
+  <Card title="Custom Timing" icon="clock">
+    Intelligent placement of B-roll at optimal moments in your video.
+  </Card>
+</CardGroup>
+
+## Key Features
+
+<Note>
+  B-roll footage is essential for creating professional-looking content and
+  maintaining viewer engagement.
+</Note>
+
+### Automatic Content Analysis
+
+- Speech-to-text conversion for context understanding
+- Topic detection and relevance matching
+- Sentiment analysis for appropriate footage selection
+
+### Smart Footage Selection
+
+- Access to millions of high-quality stock footage
+- Context-aware selection process
+- Quality and relevance scoring
+
+### Seamless Integration
+
+- Automatic timing optimization
+- Smooth transitions
+- Professional-grade editing
+
+<Card
+  title="Need Help?"
+  icon="question"
+  href="https://discord.com/invite/HXQ92SDamV"
+>
+  Join our Discord community for support and tips from other developers.
+</Card>

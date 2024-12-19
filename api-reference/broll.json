@@ -16,7 +16,7 @@
     }
   ],
   "paths": {
-    "/subtitle": {
+    "/broll": {
       "post": {
         "summary": "Request video processing",
         "description": "",
@@ -95,100 +95,13 @@
             "description": "Video URL or YouTube URL",
             "example": "https://www.youtube.com/watch?v=eY4pgeNBhk4"
           },
-          "language": {
-            "type": "string",
-            "description": "Preferred language for subtitles",
-            "example": "english",
-            "enum": [
-              "bulgarian",
-              "catalan",
-              "chinese (mandarin, simplified)",
-              "chinese (mandarin, traditional)",
-              "czech",
-              "danish",
-              "dutch",
-              "english",
-              "estonian",
-              "finnish",
-              "flemish",
-              "french",
-              "german",
-              "german (switzerland)",
-              "greek",
-              "hindi",
-              "hungarian",
-              "indonesian",
-              "italian",
-              "japanese",
-              "korean",
-              "latvian",
-              "lithuanian",
-              "malay",
-              "multilingual (spanish + english)",
-              "norwegian",
-              "polish",
-              "portuguese",
-              "romanian",
-              "russian",
-              "slovak",
-              "spanish",
-              "swedish",
-              "thai",
-              "turkish",
-              "ukrainian",
-              "vietnamese"
-            ]
-          },
           "webhookUrl": {
             "type": "string",
             "description": "Webhook URL for receiving processing updates",
             "example": "https://webhook-test.com/05674b0b229c29199fec105309a00e16"
-          },
-          "subtitleStyles": {
-            "type": "object",
-            "properties": {
-              "template": {
-                "type": "string",
-                "description": "Subtitle template style",
-                "example": "productive",
-                "default": "productive",
-                "enum": [
-                  "none",
-                  "harmozi",
-                  "pulse",
-                  "filler",
-                  "whisperer",
-                  "marineShift",
-                  "sonic",
-                  "spotlight",
-                  "focusFlash",
-                  "inflate",
-                  "boxd",
-                  "productive",
-                  "beast",
-                  "impact",
-                  "fade",
-                  "typewriter"
-                ]
-              },
-              "position": {
-                "type": "string",
-                "description": "Position of subtitles on the video",
-                "example": "bottom-center",
-                "default": "bottom-center",
-                "enum": ["bottom-center", "top-center", "middle-center"]
-              },
-              "fontSize": {
-                "type": "string",
-                "description": "Font size for subtitles",
-                "example": "m",
-                "default": "m",
-                "enum": ["s", "m", "l", "xl"]
-              }
-            }
           }
         },
-        "required": ["videoUrl", "webhookUrl", "language"]
+        "required": ["videoUrl", "webhookUrl"]
       },
       "SuccessResponse": {
         "type": "object",

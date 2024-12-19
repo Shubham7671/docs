@@ -1,0 +1,197 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Voices API",
+    "description": "API for getting voices list",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://qr-be-api-vvafsac2oa-uc.a.run.app/api/v2"
+    }
+  ],
+  "paths": {
+    "/constants/voices": {
+      "get": {
+        "summary": "Get voices list and grab voiceId for text-to-voice and text-to-video present in the response data field",
+        "description": "Get voices list and grab voiceId for text-to-voice and text-to-video present in the response data field",
+        "responses": {
+          "200": {
+            "description": "Request created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request: Missing required fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error: Please try again later or contact support",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests: Please slow down your request rate.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "VideoRequest": {
+        "type": "object",
+        "properties": {
+          "videoUrl": {
+            "type": "string",
+            "description": "Video URL or YouTube URL",
+            "example": "https://www.youtube.com/watch?v=eY4pgeNBhk4"
+          },
+          "webhookUrl": {
+            "type": "string",
+            "description": "Webhook URL for receiving processing updates",
+            "example": "https://webhook-test.com/05674b0b229c29199fec105309a00e16"
+          }
+        },
+        "required": ["videoUrl", "webhookUrl"]
+      },
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "description": "Total number of voices available",
+            "example": 803
+          },
+          "message": {
+            "type": "string",
+            "description": "Success message",
+            "example": "Voices fetched successfully!"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "voiceId": {
+                  "type": "string",
+                  "description": "Unique identifier for the voice. This is a required field for creating text-to-voice and text-to-video.",
+                  "example": "5dfe5ceb-0068-4a5f-8960-214e272f57a7"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Name of the voice",
+                  "example": "AIGenerate1"
+                },
+                "gender": {
+                  "type": "string",
+                  "description": "Gender of the voice",
+                  "example": "Male"
+                },
+                "languageCode": {
+                  "type": "string",
+                  "description": "Language code of the voice",
+                  "example": "en-US"
+                },
+                "style": {
+                  "type": "string",
+                  "description": "Style of the voice",
+                  "example": "general"
+                },
+                "sampleVoiceUrl": {
+                  "type": "string",
+                  "description": "URL to a sample of the voice",
+                  "example": "https://qr-be-assests.s3.us-east-1.amazonaws.com/voices/en-US-AIGenerate1-General-Audio.wav"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message"
+              }
+            }
+          }
+        }
+      },
+
+      "BadRequestErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message",
+                "example": "Bad Request: Missing required fields"
+              }
+            }
+          }
+        }
+      },
+
+      "InternalServerErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message",
+                "example": "Internal Server Error: Please try again later or contact support"
+              }
+            }
+          }
+        }
+      },
+      "TooManyRequestsErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message",
+                "example": "Too Many Requests: Please slow down your request rate."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

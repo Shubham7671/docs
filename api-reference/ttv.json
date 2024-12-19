@@ -16,7 +16,7 @@
     }
   ],
   "paths": {
-    "/subtitle": {
+    "/ttv": {
       "post": {
         "summary": "Request video processing",
         "description": "",
@@ -90,53 +90,34 @@
       "VideoRequest": {
         "type": "object",
         "properties": {
-          "videoUrl": {
+          "voiceId": {
             "type": "string",
-            "description": "Video URL or YouTube URL",
-            "example": "https://www.youtube.com/watch?v=eY4pgeNBhk4"
+            "description": "Voice ID for the video",
+            "example": "386a7b80-1001-4017-bb51-49b3428ab8f4",
+            "default": "386a7b80-1001-4017-bb51-49b3428ab8f4"
           },
-          "language": {
+          "visualStyle": {
             "type": "string",
-            "description": "Preferred language for subtitles",
-            "example": "english",
+            "description": "Visual style for the video",
+            "example": "realism",
+            "default": "realism",
             "enum": [
-              "bulgarian",
-              "catalan",
-              "chinese (mandarin, simplified)",
-              "chinese (mandarin, traditional)",
-              "czech",
-              "danish",
-              "dutch",
-              "english",
-              "estonian",
-              "finnish",
-              "flemish",
-              "french",
-              "german",
-              "german (switzerland)",
-              "greek",
-              "hindi",
-              "hungarian",
-              "indonesian",
-              "italian",
-              "japanese",
-              "korean",
-              "latvian",
-              "lithuanian",
-              "malay",
-              "multilingual (spanish + english)",
-              "norwegian",
-              "polish",
-              "portuguese",
-              "romanian",
-              "russian",
-              "slovak",
-              "spanish",
-              "swedish",
-              "thai",
-              "turkish",
-              "ukrainian",
-              "vietnamese"
+              "realtime",
+              "realism",
+              "anime",
+              "cyberpunk",
+              "comic",
+              "fantasy",
+              "scifi",
+              "lego",
+              "pixel_art",
+              "line_art",
+              "renaissance",
+              "medieval_painting",
+              "medieval_painting2",
+              "wes_anderson",
+              "anime_figures",
+              "porcelain"
             ]
           },
           "webhookUrl": {
@@ -186,9 +167,38 @@
                 "enum": ["s", "m", "l", "xl"]
               }
             }
+          },
+          "additionalFeatures": {
+            "type": "object",
+            "properties": {
+              "addBgm": {
+                "type": "boolean",
+                "description": "Add background music to the video",
+                "example": "false",
+                "default": false
+              }
+            }
           }
         },
-        "required": ["videoUrl", "webhookUrl", "language"]
+        "required": ["webhookUrl", "voiceId"],
+        "anyOf": [
+          {
+            "title": "Script",
+            "properties": {
+              "script": { "type": "string" }
+            },
+            "required": ["script"],
+            "description": " Provide a script directly for video processing."
+          },
+          {
+            "title": "Prompt",
+            "properties": {
+              "prompt": { "type": "string" }
+            },
+            "required": ["prompt"],
+            "description": " Provide a prompt to generate a script for video processing."
+          }
+        ]
       },
       "SuccessResponse": {
         "type": "object",

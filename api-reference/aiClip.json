@@ -2,12 +2,12 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Video Processing API",
-    "description": "API for processing video clips from YouTube URLs",
+    "description": "API for processing video clips from video URLs or YouTube URLs",
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "https://qr-be-api-vvafsac2oa-uc.a.run.app"
+      "url": "https://qr-be-api-vvafsac2oa-uc.a.run.app/api/v2"
     }
   ],
   "security": [
@@ -16,7 +16,7 @@
     }
   ],
   "paths": {
-    "/api/request/aiclip": {
+    "/clip": {
       "post": {
         "summary": "Request video processing",
         "description": "",
@@ -61,16 +61,6 @@
               }
             }
           },
-          "415": {
-            "description": "Unsupported Media Type: The provided video URL is not a downloadable video link",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnsupportedMediaTypeResponse"
-                }
-              }
-            }
-          },
           "500": {
             "description": "Internal Server Error: Please try again later or contact support",
             "content": {
@@ -80,141 +70,13 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/api/request/aiclip/status": {
-      "get": {
-        "summary": "Check request status",
-        "description": "Check the processing status of a video request by request ID",
-        "parameters": [
-          {
-            "name": "requestId",
-            "in": "query",
-            "required": true,
-            "description": "ID of the video processing request",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Request status retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/StatusResponseAI_clip_status"
-                }
-              }
-            }
           },
-          "400": {
-            "description": "Bad Request: Missing required fields",
+          "429": {
+            "description": "Too Many Requests: Please slow down your request rate.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BadRequestErrorResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized: API key invalid",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Video request not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponse404"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error: Please try again later or contact support",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/request/aiclip/get": {
-      "get": {
-        "summary": "Get video processing result",
-        "description": "Retrieve the result of a video processing request by request ID",
-        "parameters": [
-          {
-            "name": "requestId",
-            "in": "query",
-            "required": true,
-            "description": "ID of the video processing request",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Request result retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultResponseAI_clip_get"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request: Missing required fields",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestErrorResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized: API key invalid",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Video request not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponse404"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error: Please try again later or contact support",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                  "$ref": "#/components/schemas/TooManyRequestsErrorResponse"
                 }
               }
             }
@@ -230,173 +92,156 @@
         "properties": {
           "videoUrl": {
             "type": "string",
-            "description": "YouTube video URL"
+            "description": "Video URL or YouTube URL",
+            "example": "https://www.youtube.com/watch?v=eY4pgeNBhk4"
           },
-          "callBackUrl": {
+          "language": {
             "type": "string",
-            "description": "Callback URL to receive the processed video result"
+            "description": "Preferred language for subtitles",
+            "example": "english",
+            "enum": [
+              "bulgarian",
+              "catalan",
+              "chinese (mandarin, simplified)",
+              "chinese (mandarin, traditional)",
+              "czech",
+              "danish",
+              "dutch",
+              "english",
+              "estonian",
+              "finnish",
+              "flemish",
+              "french",
+              "german",
+              "german (switzerland)",
+              "greek",
+              "hindi",
+              "hungarian",
+              "indonesian",
+              "italian",
+              "japanese",
+              "korean",
+              "latvian",
+              "lithuanian",
+              "malay",
+              "multilingual (spanish + english)",
+              "norwegian",
+              "polish",
+              "portuguese",
+              "romanian",
+              "russian",
+              "slovak",
+              "spanish",
+              "swedish",
+              "thai",
+              "turkish",
+              "ukrainian",
+              "vietnamese"
+            ]
           },
-           "subtitleTemplate": {
+          "webhookUrl": {
             "type": "string",
-            "description": "Choose a subtitle template (default Impact will be added). Pass as false to skip the template. Choose from available Template (optional): impact, pop, productive, typewriter, fade, beast ."
+            "description": "Webhook URL for receiving processing updates",
+            "example": "https://webhook-test.com/05674b0b229c29199fec105309a00e16"
           },
-           "videoLanguage": {
-            "type": "string",
-            "description": "Choose your subtitle language (default it will auto detect).  Choose from available supported language (optional): Bulgarian, Catalan, Chinese (Mandarin, Simplified),Chinese (Mandarin, Traditional), Czech, Danish, Dutch,English, Estonian, Finnish, Flemish, French, German,German (Switzerland), Greek, Hindi, Hungarian, Indonesian,Italian, Japanese, Korean, Latvian, Lithuanian, Malay,Multilingual (Spanish + English), Norwegian, Polish,Portuguese, Romanian, Russian, Slovak, Spanish, Swedish,Thai, Turkish, Ukrainian, Vietnamese (default it will auto detect)."
+          "subtitleStyles": {
+            "type": "object",
+            "properties": {
+              "template": {
+                "type": "string",
+                "description": "Subtitle template style",
+                "example": "productive",
+                "default": "productive",
+                "enum": [
+                  "none",
+                  "harmozi",
+                  "pulse",
+                  "filler",
+                  "whisperer",
+                  "marineShift",
+                  "sonic",
+                  "spotlight",
+                  "focusFlash",
+                  "inflate",
+                  "boxd",
+                  "productive",
+                  "beast",
+                  "impact",
+                  "fade",
+                  "typewriter"
+                ]
+              },
+              "position": {
+                "type": "string",
+                "description": "Position of subtitles on the video",
+                "example": "bottom-center",
+                "default": "bottom-center",
+                "enum": ["bottom-center", "top-center", "middle-center"]
+              },
+              "fontSize": {
+                "type": "string",
+                "description": "Font size for subtitles",
+                "example": "m",
+                "default": "m",
+                "enum": ["s", "m", "l", "xl"]
+              }
+            }
+          },
+          "additionalFeatures": {
+            "type": "object",
+            "properties": {
+              "addBgm": {
+                "type": "boolean",
+                "description": "Add background music to the video",
+                "example": "false",
+                "default": false
+              },
+              "addBroll": {
+                "type": "boolean",
+                "description": "Add B-roll footage to the video",
+                "example": false,
+                "default": false
+              },
+              "removeFillerWords": {
+                "type": "boolean",
+                "description": "Remove filler words from the video",
+                "example": "false",
+                "default": false
+              },
+              "removeSilenceParts": {
+                "type": "boolean",
+                "description": "Remove silence parts from the video",
+                "example": "false",
+                "default": false
+              },
+              "addHook": {
+                "type": "boolean",
+                "description": "Add hook to the video",
+                "example": "false",
+                "default": false
+              }
+            }
           }
         },
-        "required": ["videoUrl", "callBackUrl"]
+        "required": ["videoUrl", "webhookUrl", "language"]
       },
       "SuccessResponse": {
         "type": "object",
         "properties": {
-          "statusCode": {
-            "type": "integer",
-            "description": "Status code",
-            "example": 201
-          },
           "status": {
             "type": "string",
             "description": "Status of the request",
-            "example": "success"
+            "example": "created"
           },
           "message": {
             "type": "string",
             "description": "Success message",
-            "example": "your request created successfully"
+            "example": "project created successfully"
           },
-          "requestId": {
+          "projectId": {
             "type": "string",
-            "description": "Request ID",
+            "description": "Project ID",
             "example": "667bbc6973e392d3f7f6f620"
-          }
-        }
-      },
-      "ResultResponseAI_clip_get": {
-        "type": "object",
-        "properties": {
-          "statusCode": {
-            "type": "integer",
-            "description": "Status code",
-            "example": 200
-          },
-          "status": {
-            "type": "string",
-            "description": "Status of the request",
-            "example": "success"
-          },
-          "message": {
-            "type": "string",
-            "description": "Status message",
-            "example": "your project is in success state."
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "projectType": {
-                "type": "string",
-                "description": "Type of the project",
-                "example": "AI_CLIP"
-              },
-              "totalTrims": {
-                "type": "integer",
-                "description": "Total number of trims",
-                "example": 2
-              },
-              "status": {
-                "type": "string",
-                "description": "Current status of the request",
-                "example": "success"
-              },
-              "trims": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "_id": {
-                      "type": "string",
-                      "description": "ID of the trim",
-                      "example": "667a8f5c3b1b2648f3f10329"
-                    },
-                    "s3Url": {
-                      "type": "string",
-                      "description": "S3 URL of the trim",
-                      "example": "https://qr-s3-file-upload.s3.ap-south-1.amazonaws.com/666c2f1872a90329.mp4"
-                    },
-                    "title": {
-                      "type": "string",
-                      "description": "Title of the trim",
-                      "example": "Struggles of Learning English"
-                    },
-                    "status": {
-                      "type": "string",
-                      "description": "Status of the trim",
-                      "example": "completed"
-                    },
-                    "tags": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      },
-                      "example": [
-                        "English",
-                        "Speaking",
-                        "Frustration",
-                        "Understanding",
-                        "Communication"
-                      ]
-                    },
-                    "caption": {
-                      "type": "string",
-                      "description": "Caption of the trim",
-                      "example": "Overcoming the Language Barrier"
-                    },
-                    "virality_score": {
-                      "type": "integer",
-                      "description": "Virality score of the trim",
-                      "example": 95
-                    },
-                    "virality_score_reason": {
-                      "type": "string",
-                      "description": "Reason for the virality score",
-                      "example": "Many people can relate to the frustration of understanding a language but struggling to speak it fluently. This reel captures that struggle and offers hope and encouragement to viewers."
-                    },
-                    "processedDate": {
-                      "type": "string",
-                      "format": "date-time",
-                      "description": "Date and time when the trim was processed",
-                      "example": "2024-06-25T09:36:48.985Z"
-                    },
-                    "trimThumbnailUrl": {
-                      "type": "string",
-                      "description": "Thumbnail URL of the trim",
-                      "example": "https://qr-s3-file-upload.s3.ap-south-110329.jpg"
-                    }
-                  }
-                }
-              },
-              "subtitleTemplate": {
-                "type": "string",
-                "description": "Template used for subtitles",
-                "example": "impact"
-              },
-              "callBackUrl": {
-                "type": "string",
-                "description": "Callback URL",
-                "example": "https://s267iebfrnjsb63psrp2sezdky0hkrxl.us-east-1.on.aws/"
-              },
-              "createdAt": {
-                "type": "string",
-                "format": "date-time",
-                "description": "Date and time when the request was created",
-                "example": "2024-06-25T09:34:30.912Z"
-              },
-              "requestId": {
-                "type": "string",
-                "description": "Request ID",
-                "example": "667a8f26a9f881db6bb3f1d9"
-              }
-            }
           }
         }
       },
@@ -404,46 +249,11 @@
         "type": "object",
         "properties": {
           "error": {
-            "type": "string",
-            "description": "Error message"
-          }
-        }
-      },
-      "StatusResponseAI_clip_status": {
-        "type": "object",
-        "properties": {
-          "statusCode": {
-            "type": "integer",
-            "description": "Status code",
-            "example": 200
-          },
-          "status": {
-            "type": "string",
-            "description": "Status of the request",
-            "example": "success"
-          },
-          "message": {
-            "type": "string",
-            "description": "Status message",
-            "example": "your project is in completed state."
-          },
-          "data": {
             "type": "object",
             "properties": {
-              "statusCode": {
-                "type": "integer",
-                "description": "Status code of the request",
-                "example": 200
-              },
-              "requestId": {
+              "message": {
                 "type": "string",
-                "description": "Request ID",
-                "example": "668550d7a6e67e7599d96bac"
-              },
-              "requestStatus": {
-                "type": "string",
-                "description": "Current status of the request",
-                "example": "completed"
+                "description": "Error message"
               }
             }
           }
@@ -453,38 +263,13 @@
       "NotFoundResponse404": {
         "type": "object",
         "properties": {
-          "statusCode": {
-            "type": "integer",
-            "description": "Status code",
-            "example": 404
-          },
-          "status": {
-            "type": "string",
-            "description": "Status of the request",
-            "example": "error"
-          },
-          "message": {
-            "type": "string",
-            "description": "Error message",
-            "example": "Video request not found."
-          },
-          "data": {
+          "error": {
             "type": "object",
             "properties": {
-              "statusCode": {
-                "type": "integer",
-                "description": "Status code of the request",
-                "example": 404
-              },
-              "requestId": {
+              "message": {
                 "type": "string",
-                "description": "Request ID",
-                "example": "668550d7a6ee7599d96bac"
-              },
-              "requestStatus": {
-                "type": "string",
-                "description": "Current status of the request",
-                "example": "not_found"
+                "description": "Error message",
+                "example": "Video request not found."
               }
             }
           }
@@ -494,40 +279,30 @@
       "BadRequestErrorResponse": {
         "type": "object",
         "properties": {
-          "statusCode": {
-            "type": "integer",
-            "description": "Status code",
-            "example": 400
-          },
-          "status": {
-            "type": "string",
-            "description": "Status of the request",
-            "example": "error"
-          },
-          "message": {
-            "type": "string",
-            "description": "Error message",
-            "example": "Bad Request: Missing required fields"
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message",
+                "example": "Bad Request: Missing required fields"
+              }
+            }
           }
         }
       },
       "UnauthorizedErrorResponse": {
         "type": "object",
         "properties": {
-          "statusCode": {
-            "type": "integer",
-            "description": "Status code",
-            "example": 401
-          },
-          "status": {
-            "type": "string",
-            "description": "Status of the request",
-            "example": "error"
-          },
-          "message": {
-            "type": "string",
-            "description": "Error message",
-            "example": "Unauthorized: API key invalid"
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message",
+                "example": "Unauthorized: API key invalid"
+              }
+            }
           }
         }
       },
@@ -535,37 +310,30 @@
       "InternalServerErrorResponse": {
         "type": "object",
         "properties": {
-          "statusCode": {
-            "type": "integer",
-            "description": "Status code",
-            "example": 500
-          },
-          "status": {
-            "type": "string",
-            "description": "Status of the request",
-            "example": "error"
-          },
-          "message": {
-            "type": "string",
-            "description": "Error message",
-            "example": "Internal Server Error: Please try again later or contact support"
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message",
+                "example": "Internal Server Error: Please try again later or contact support"
+              }
+            }
           }
         }
       },
-      "UnsupportedMediaTypeResponse": {
+      "TooManyRequestsErrorResponse": {
         "type": "object",
         "properties": {
-          "statusCode": {
-            "type": "integer",
-            "example": 415
-          },
-          "status": {
-            "type": "string",
-            "example": "error"
-          },
-          "message": {
-            "type": "string",
-            "example": "The provided video URL is not a downloadable video link"
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message",
+                "example": "Too Many Requests: Please slow down your request rate."
+              }
+            }
           }
         }
       }

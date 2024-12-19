@@ -1,0 +1,87 @@
+---
+title: "Introduction"
+description: "Adds animated subtitles to videos, with transcription and customizable styles.Ideal for making videos accessible, enhancing viewer engagement, and improving comprehension."
+icon: "map"
+---
+
+## Overview
+
+AI Subtitle is designed to transform your video content by adding dynamic, animated subtitles that not only make your videos more accessible but also significantly enhance viewer engagement and comprehension. Here are some key
+
+<video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="w-full aspect-video rounded-xl"
+  src="/images/subtitle.mp4"
+></video>
+
+## How to Create a Video Subtitle
+
+To create a video subtitle using AI Subtitle, send a POST request to the specified endpoint with the required parameters.
+
+**Base URL : `https://qr-be-api-vvafsac2oa-uc.a.run.app/api/v2`**
+
+**Endpoint : `/subtitle`**
+
+**Method : `POST`**
+
+**Headers :**
+
+```plaintext
+Content-Type: application/json
+x-api-key: <your_api_key>
+```
+
+**Request Body Parameters**
+
+| Key                | Data Type | Description                                                                                                                                                                             | Mandatory |
+| ------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| videoUrl           | STRING    | URL of the source video (YouTube link or video file URL)                                                                                                                                | Required  |
+| webhookUrl         | STRING    | URL to receive processing updates                                                                                                                                                       | Required  |
+| language           | STRING    | Preferred language for subtitles. Supported languages include: Bulgarian, Catalan, Chinese (Mandarin, Simplified), Chinese (Mandarin, Traditional), Czech, Danish, Dutch, English, etc. | Required  |
+| subtitleStyles     | OBJECT    | Customize subtitle appearance. Includes `template`, `position`, and `fontSize`.                                                                                                         | Optional  |
+| additionalFeatures | OBJECT    | Additional video processing features. Includes `addBgm`, `addBroll`, `removeFillerWords`, `removeSilenceParts`, and `addHook`.                                                          | Optional  |
+
+#### Subtitle Styles
+
+- **template** (STRING): Subtitle template style. Default is "productive". Options include "none", "harmozi", "pulse", "filler", "whisperer", "marineShift", "sonic", "spotlight", "focusFlash", "inflate", "boxd", "productive", "beast", "impact", "fade", "typewriter".
+- **position** (STRING): Position of subtitles on the video. Default is "bottom-center". Options include "bottom-center", "top-center", "middle-center".
+- **fontSize** (STRING): Font size for subtitles. Default is "m". Options include "s", "m", "l", "xl".
+
+## Example Request
+
+```json
+{
+  "videoUrl": "https://www.youtube.com/watch?v=example",
+  "webhookUrl": "https://your-callback-url.com",
+  "language": "english",
+  "subtitleStyles": {
+    "template": "productive",
+    "position": "bottom-center",
+    "fontSize": "m"
+  }
+}
+```
+
+## Response
+
+Upon successful processing, the webhook URL will receive a response with the status and details of the processed video. The response includes metadata about the clip, such as duration, resolution, and a direct link to download the processed video.
+
+## Advanced Use Cases
+
+- **Dynamic Content Creation**: Use AI Subtitle to generate dynamic content for social media campaigns, adapting clips to different platforms' requirements.
+- **Automated Content Curation**: Integrate AI Subtitle into content management systems to automate the curation of video highlights for news or entertainment platforms.
+- **Educational Videos**: Enhance learning by providing clear and readable subtitles, making complex topics easier to understand.
+- **Marketing Campaigns**: Create eye-catching subtitles that align with your campaign's visual style, increasing the impact of your message.
+- **Social Media Content**: Adapt your videos for different platforms with subtitles that fit the format and style of each platform.
+
+## Additional Information
+
+For more details on how to use AI Subtitle and other features, refer to the [API Reference](../gettingStarted).
+
+<Note>
+  If you have any questions or need support, please contact us at
+  [support@quickreel.io](mailto:support@quickreel.io).
+</Note>

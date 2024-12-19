@@ -1,5 +1,38 @@
 ---
-title: 'Webhook'
-
-description: 'Description of your new file.'
+title: "Response"
+description: "Using Callbacks to Return Response to Your Server"
+icon: "webhook"
 ---
+
+### Callback Response
+
+When Quickreel completes processing your request, it sends a callback response to the URL specified in the `callBackUrl` parameter. Below is an example of the response you will receive:
+
+For more details on handling callback responses, refer to the [Callback Intoduction page](https://quickreel-8ab1b997.mintlify.app/callback) in the documentation.
+
+```json
+{
+  "statusCode": 200,
+  "status": "success",
+  "message": "your project is in completed state.",
+  "data": {
+    "statusCode": 200,
+    "requestId": "66992fe51eb96c8c8284d62d",
+    "requestStatus": "completed",
+    "videoUrl": "https://qr-be-file-upload-us-east-1.s3.amazonaws.com/667d64fe5ac472ec0d2f.mp4"
+  }
+}
+```
+
+**Response Attributes:**
+
+### Response Attributes
+
+- `statusCode`: The HTTP status code indicating the result of the request.
+- `status`: The status of the request.
+- `message`: A message indicating the state of the project.
+- `data`: An object containing detailed information about the project.
+  - `statusCode`: The HTTP status code indicating the result of the project request.
+  - `requestId`: The unique identifier of the request.
+  - `requestStatus`: The status of the request.
+  - `videoUrl`: The URL of the output video.
