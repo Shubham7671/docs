@@ -154,6 +154,9 @@
                 "default": "productive",
                 "enum": [
                   "none",
+                  "cinematic",
+                  "vivid",
+                  "whisperer2",
                   "harmozi",
                   "pulse",
                   "filler",

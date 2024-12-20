@@ -153,6 +153,9 @@
                 "example": "productive",
                 "default": "productive",
                 "enum": [
+                  "cinematic",
+                  "vivid",
+                  "whisperer2",
                   "harmozi",
                   "pulse",
                   "filler",
