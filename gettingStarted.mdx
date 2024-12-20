@@ -6,8 +6,8 @@ description: "Welcome to the QuickReel API! This guide will help you integrate o
 ### 1. Request Your API Key
 
 <Note>
-  To use the QuickReel API, you'll need an API key. Get yours from the
-  [QuickReel Dashboard](https://api.quickreel.io/).
+  To use the QuickReel API, you'll need an API key. Get yours from registering
+  through the [QuickReel API Dashboard](https://www.api.quickreel.io/contact).
 </Note>
 
 ### 2. Base URL
@@ -44,20 +44,43 @@ headers = {
 
 </CodeGroup>
 
-## API Response Format
+### 4. Getting Responses
 
-All API responses follow a consistent JSON format:
+There are two ways to receive your API responses:
+
+#### Option A: Webhook Response
+
+When you provide a `webhookUrl` in your request, we'll send the response to your webhook endpoint. More information on webhooks can be found in the [Webhook Handling](/webhook) section.
 
 ```json
 {
-  "statusCode": 200,
-  "status": "success",
-  "message": "Operation completed successfully",
-  "data": {
-    // Response data specific to the endpoint
-  }
+  "projectId": "676409ad10ded0f9fc89d224",
+  "status": "completed",
+  "createdAt": "2024-12-19T11:55:25.602Z",
+  "completedAt": "2024-12-19T14:22:35.533Z",
+  "error": null,
+  "outputs": [
+    {
+      "id": "67640a41df9247bc89de7813",
+      "videoUrl": "https://qr-be-api-upload.s3.us-east-1.amazonaws.com/output.mp4",
+      "thumbnailUrl": "https://qr-be-api-upload.s3.us-east-1.amazonaws.com/thumbnail.jpg"
+    }
+  ]
 }
 ```
+
+#### Option B: Project Status Check
+
+You can also retrieve results by making a GET request to `/projects/{projectId}`. More information on getting your projects by projectId can be found in the [Get Projects](/getProject) section.
+
+```bash
+GET https://engine.quickreel.io/api/v2/projects/{projectId}
+```
+
+<Note>
+  The projectId is provided in the initial response when creating a project.
+  Save this projectId for future reference.
+</Note>
 
 ## Rate Limits and Quotas
 
@@ -69,8 +92,3 @@ All API responses follow a consistent JSON format:
 - **Free Tier**: 100 requests/hour
 - **Pro Tier**: 1000 requests/hour
 - **Enterprise**: Custom limits available
-
-<Note>
-  If you have any query , Contact us at
-  [support@quickreel.io](mailto:support@quickreel.io).
-</Note>

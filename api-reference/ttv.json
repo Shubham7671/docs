@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Video Processing API",
-    "description": "API for processing video clips from video URLs or YouTube URLs",
+    "title": "Text to Video API",
+    "description": "API for generating videos from text",
     "version": "1.0.0"
   },
   "servers": [

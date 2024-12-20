@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Video Processing API",
-    "description": "API for processing video clips from video URLs or YouTube URLs",
+    "title": "Text to Speech API",
+    "description": "API for generating speech from text",
     "version": "1.0.0"
   },
   "servers": [
@@ -18,10 +18,10 @@
   "paths": {
     "/tts": {
       "post": {
-        "summary": "Request video processing",
+        "summary": "Request text to speech",
         "description": "",
         "requestBody": {
-          "description": "Request payload for video processing",
+          "description": "Request payload for text to speech",
           "content": {
             "application/json": {
               "schema": {
