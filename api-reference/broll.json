@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://qr-be-api-vvafsac2oa-uc.a.run.app/api/v2"
+      "url": "https://engine.quickreel.io/api/v2"
     }
   ],
   "security": [

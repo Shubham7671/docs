@@ -1,11 +1,11 @@
 ---
-title: 'AI Autocrop'
-description: 'AI AutoCrop detects active speakers in a horizontal video and crops it into a vertical 9:16 HD format.Perfect for repurposing horizontal videos for vertical formats like TikTok or Instagram Stories.'
+title: "AI Autocrop"
+description: "AI AutoCrop detects active speakers in a horizontal video and crops it into a vertical 9:16 HD format.Perfect for repurposing horizontal videos for vertical formats like TikTok or Instagram Stories."
 ---
 
 ## Create Video
 
-**Host URL:** `https://qr-be-api-vvafsac2oa-uc.a.run.app`
+**Host URL:** `https://engine.quickreel.io`
 
 **Endpoint:** `/api/request/autocrop`
 
@@ -15,20 +15,16 @@ description: 'AI AutoCrop detects active speakers in a horizontal video and crop
 
 ```markdown
 Content-Type: application/json
-x-api-key: <your_api_key> 
+x-api-key: <your_api_key>
 ```
 
 ### Request ( Body )
 
-
-
-Key              | Data Type | Description                                                                       | Mandatory
------------------|-----------|-----------------------------------------------------------------------------------|-----------
-videoUrl         | STRING    | URL of the source video (YouTube link or video file URL)                            | Required
-callBackUrl      | STRING    | URL to receive the response after all tasks are completed                          | Required
-fillerWords      | BOOLEAN   | Remove filler words like 'aa', 'uu', 'umm'. Set to true to enable                   | Optional
-silenceRemover   | BOOLEAN   | Remove silences in the video. Set to true to enable                                 | Optional
-noiseCleaner     | BOOLEAN   | Enhance the audio quality. Set to true to enable                                    | Optional
-backgroundMusic  | BOOLEAN   | Add AI-generated music matching the mood of your video. Set to true to enable       | Optional
-
-
+| Key             | Data Type | Description                                                                   | Mandatory |
+| --------------- | --------- | ----------------------------------------------------------------------------- | --------- |
+| videoUrl        | STRING    | URL of the source video (YouTube link or video file URL)                      | Required  |
+| callBackUrl     | STRING    | URL to receive the response after all tasks are completed                     | Required  |
+| fillerWords     | BOOLEAN   | Remove filler words like 'aa', 'uu', 'umm'. Set to true to enable             | Optional  |
+| silenceRemover  | BOOLEAN   | Remove silences in the video. Set to true to enable                           | Optional  |
+| noiseCleaner    | BOOLEAN   | Enhance the audio quality. Set to true to enable                              | Optional  |
+| backgroundMusic | BOOLEAN   | Add AI-generated music matching the mood of your video. Set to true to enable | Optional  |
