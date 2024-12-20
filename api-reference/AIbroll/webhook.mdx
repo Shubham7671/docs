@@ -1,38 +1,55 @@
 ---
 title: "Response"
-description: "Using Callbacks to Return Response to Your Server"
+description: "Webhook or hit the get project by project id endpoint to get the response"
 icon: "webhook"
 ---
 
-### Callback Response
+### Get Project By Project Id
 
-When Quickreel completes processing your request, it sends a callback response to the URL specified in the `callBackUrl` parameter. Below is an example of the response you will receive:
+You can also hit the get project endpoint to get the response.
+Refer to the [Get Project Page](/getProject).
 
-For more details on handling callback responses, refer to the [Callback Intoduction page](https://quickreel-8ab1b997.mintlify.app/callback) in the documentation.
+### Webhook Response
+
+When Quickreel completes processing your request, it sends a webhook response to the URL specified in the `webhookUrl` parameter. Below is an example of the response you will receive:
 
 ```json
 {
-  "statusCode": 200,
-  "status": "success",
-  "message": "your project is in completed state.",
-  "data": {
-    "statusCode": 200,
-    "requestId": "66992fe51eb96c8c8284d62d",
-    "requestStatus": "completed",
-    "videoUrl": "https://qr-be-file-upload-us-east-1.s3.amazonaws.com/667d64fe5ac472ec0d2f.mp4"
-  }
+  "projectId": "676409ad10ded0f9fc89d224",
+  "status": "completed",
+  "createdAt": "2024-12-19T11:55:25.602Z",
+  "completedAt": "2024-12-19T14:22:35.533Z",
+  "error": null,
+  "outputs": [
+    {
+      "id": "67640a41df9247bc89de7813",
+      "videoUrl": "https://qr-be-api-upload.s3.us-east-1.amazonaws.com/67618d230847a22a7550faf9/676409ad10ded0f9fc89d224/67640a41df9247bc89de7813_final_hook.mp4",
+      "thumbnailUrl": "https://qr-be-api-upload.s3.us-east-1.amazonaws.com/67618d230847a22a7550faf9/676409ad10ded0f9fc89d224/67640a41df9247bc89de7813_trim_thumbnail.jpg"
+    }
+  ]
 }
 ```
 
 **Response Attributes:**
 
-### Response Attributes
+- `projectId`: The unique identifier of the project.
+- `status`: The status of the project.
+- `createdAt`: The date and time the request was created.
+- `completedAt`: The date and time the project was completed.
+- `error`: Any error information if applicable.
+- `outputs`: An array containing details of each output.
+  - `id`: The unique identifier of the output.
+  - `videoUrl`: The URL to access the video.
+  - `thumbnailUrl`: The URL to access the thumbnail.
 
-- `statusCode`: The HTTP status code indicating the result of the request.
-- `status`: The status of the request.
-- `message`: A message indicating the state of the project.
-- `data`: An object containing detailed information about the project.
-  - `statusCode`: The HTTP status code indicating the result of the project request.
-  - `requestId`: The unique identifier of the request.
-  - `requestStatus`: The status of the request.
-  - `videoUrl`: The URL of the output video.
+### Note on Response Handling:
+
+<Warning>
+  You will have to send a 200 status code immediately after receiving the
+  response.
+</Warning>
+
+<Info>
+  If you want more details on handling webhook responses, refer to the [Webhook
+  Handling Page](/webhook) in the documentation.
+</Info>

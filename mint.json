@@ -41,7 +41,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "gettingStarted"]
+      "pages": ["introduction", "gettingStarted", "getProject"]
     },
     {
       "group": "API References",
@@ -57,7 +57,7 @@
         },
         {
           "group": "AI Subtitling",
-          "icon": "list",
+          "icon": "closed-captioning",
           "pages": [
             "api-reference/AIsubtitle/introduction",
             "api-reference/AIsubtitle/create",
@@ -107,9 +107,9 @@
       ]
     },
     {
-      "group": "Callback/Webhook",
+      "group": "Utilities",
       "icon": "info",
-      "pages": ["callback"]
+      "pages": ["webhook", "error"]
     }
   ],
   "footerSocials": {

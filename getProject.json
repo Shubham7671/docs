@@ -16,22 +16,23 @@
     }
   ],
   "paths": {
-    "/subtitle": {
-      "post": {
-        "summary": "Request video processing",
-        "description": "",
-        "requestBody": {
-          "description": "Request payload for video processing",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/VideoRequest"
-              }
+    "/projects/{projectId}": {
+      "get": {
+        "summary": "Get Project",
+        "description": "Get Project",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "Project ID",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
-        },
+        ],
         "responses": {
-          "201": {
+          "200": {
             "description": "Request created successfully",
             "content": {
               "application/json": {
@@ -80,6 +81,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Project not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse404"
+                }
+              }
+            }
           }
         }
       }
@@ -87,125 +98,105 @@
   },
   "components": {
     "schemas": {
-      "VideoRequest": {
-        "type": "object",
-        "properties": {
-          "videoUrl": {
-            "type": "string",
-            "description": "Video URL or YouTube URL",
-            "example": "https://www.youtube.com/watch?v=eY4pgeNBhk4"
-          },
-          "language": {
-            "type": "string",
-            "description": "Preferred language for subtitles",
-            "example": "english",
-            "enum": [
-              "bulgarian",
-              "catalan",
-              "chinese (mandarin, simplified)",
-              "chinese (mandarin, traditional)",
-              "czech",
-              "danish",
-              "dutch",
-              "english",
-              "estonian",
-              "finnish",
-              "flemish",
-              "french",
-              "german",
-              "german (switzerland)",
-              "greek",
-              "hindi",
-              "hungarian",
-              "indonesian",
-              "italian",
-              "japanese",
-              "korean",
-              "latvian",
-              "lithuanian",
-              "malay",
-              "multilingual (spanish + english)",
-              "norwegian",
-              "polish",
-              "portuguese",
-              "romanian",
-              "russian",
-              "slovak",
-              "spanish",
-              "swedish",
-              "thai",
-              "turkish",
-              "ukrainian",
-              "vietnamese"
-            ]
-          },
-          "webhookUrl": {
-            "type": "string",
-            "description": "Webhook URL for receiving processing updates",
-            "example": "https://webhook-test.com/05674b0b229c29199fec105309a00e16"
-          },
-          "subtitleStyles": {
-            "type": "object",
-            "properties": {
-              "template": {
-                "type": "string",
-                "description": "Subtitle template style",
-                "example": "productive",
-                "default": "productive",
-                "enum": [
-                  "harmozi",
-                  "pulse",
-                  "filler",
-                  "whisperer",
-                  "marineShift",
-                  "sonic",
-                  "spotlight",
-                  "focusFlash",
-                  "inflate",
-                  "boxd",
-                  "productive",
-                  "beast",
-                  "impact",
-                  "fade",
-                  "typewriter"
-                ]
-              },
-              "position": {
-                "type": "string",
-                "description": "Position of subtitles on the video",
-                "example": "bottom-center",
-                "default": "bottom-center",
-                "enum": ["bottom-center", "top-center", "middle-center"]
-              },
-              "fontSize": {
-                "type": "string",
-                "description": "Font size for subtitles",
-                "example": "m",
-                "default": "m",
-                "enum": ["s", "m", "l", "xl"]
-              }
-            }
-          }
-        },
-        "required": ["videoUrl", "webhookUrl", "language"]
-      },
       "SuccessResponse": {
         "type": "object",
         "properties": {
-          "status": {
-            "type": "string",
-            "description": "Status of the request",
-            "example": "created"
-          },
-          "message": {
-            "type": "string",
-            "description": "Success message",
-            "example": "project created successfully"
-          },
           "projectId": {
             "type": "string",
             "description": "Project ID",
-            "example": "667bbc6973e392d3f7f6f620"
+            "example": "676409ad10ded0f9fc89d224"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the project",
+            "example": "completed"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp",
+            "example": "2024-12-19T11:55:25.602Z"
+          },
+          "completedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Completion timestamp",
+            "example": "2024-12-19T14:22:35.533Z"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error message if any",
+            "example": null
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Output ID",
+                  "example": "67640a41df9247bc89de7813"
+                },
+                "videoUrl": {
+                  "type": "string",
+                  "description": "URL of the video",
+                  "example": "https://qr-be-api-upload.s3.us-east-1.amazonaws.com/67618d230847a22a7550faf9/676409ad10ded0f9fc89d224/67640a41df9247bc89de7813_final_hook.mp4"
+                },
+                "thumbnailUrl": {
+                  "type": "string",
+                  "description": "URL of the thumbnail",
+                  "example": "https://qr-be-api-upload.s3.us-east-1.amazonaws.com/67618d230847a22a7550faf9/676409ad10ded0f9fc89d224/67640a41df9247bc89de7813_trim_thumbnail.jpg"
+                },
+                "info": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "description": "Title of the video",
+                      "example": "The Fame Game: Family vs Fortune! 💰🏆"
+                    },
+                    "caption": {
+                      "type": "string",
+                      "description": "Caption for the video",
+                      "example": "💥 In a world where fame reigns supreme, what would you choose? 💔 Family or 100 Crores? Let's dive into the glitzy side of fame as we pick between loved ones and riches! 🌟✨ #Fame #Choices #Bollywood #Celebrities #Viral"
+                    },
+                    "viralityScore": {
+                      "type": "integer",
+                      "description": "Virality score of the video",
+                      "example": 88
+                    },
+                    "viralityScoreReason": {
+                      "type": "string",
+                      "description": "Reason for the virality score",
+                      "example": "The relatable theme of choosing between family and wealth taps into a universal dilemma, increasing its appeal. The celebrity context adds intrigue, likely to resonate with fans and attract shares."
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Tags associated with the video",
+                      "example": [
+                        "fame",
+                        "family",
+                        "bollywood",
+                        "choices",
+                        "viral"
+                      ]
+                    },
+                    "suitablePlatforms": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Platforms suitable for the video",
+                      "example": ["x", "youtube"]
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -233,7 +224,7 @@
               "message": {
                 "type": "string",
                 "description": "Error message",
-                "example": "Video request not found."
+                "example": "Project not found."
               }
             }
           }

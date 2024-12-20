@@ -1,18 +1,14 @@
 ---
-title: "Introduction"
-description: "Automatically generates and adds relevant B-roll footage to your videos, enhancing visual storytelling and engagement."
+title: "Overview"
+description: "AI BRoll is an advanced feature that automatically generates and inserts relevant B-roll footage into your videos. This enhances visual storytelling and maintains viewer engagement by providing complementary visuals that support your main content."
 icon: "map"
 ---
-
-## Overview
-
-AI BRoll is an advanced feature that automatically generates and inserts relevant B-roll footage into your videos. This enhances visual storytelling and maintains viewer engagement by providing complementary visuals that support your main content.
 
 ## How to Create a Video Clip
 
 **Base URL:** `https://engine.quickreel.io/api/v2`
 
-**Endpoint:** `/bgm`
+**Endpoint:** `/broll`
 
 **Method:** `POST`
 
@@ -29,6 +25,8 @@ x-api-key: <your_api_key>
 | ---------- | --------- | -------------------------------------------------------- | --------- |
 | videoUrl   | STRING    | URL of the source video (YouTube link or video file URL) | Required  |
 | webhookUrl | STRING    | URL to receive processing updates                        | Required  |
+
+## Key Features
 
 <CardGroup cols={2}>
   <Card title="Smart Context Analysis" icon="brain">
@@ -47,8 +45,6 @@ x-api-key: <your_api_key>
     Intelligent placement of B-roll at optimal moments in your video.
   </Card>
 </CardGroup>
-
-## Key Features
 
 <Note>
   B-roll footage is essential for creating professional-looking content and

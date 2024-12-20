@@ -1,21 +1,73 @@
 ---
-title: "Introduction"
-description: "Adds animated subtitles to videos, with transcription and customizable styles.Ideal for making videos accessible, enhancing viewer engagement, and improving comprehension."
+title: "Overview"
+description: "Adds animated subtitles to videos, with transcription and customizable styles.Ideal for making videos accessible, enhancing viewer engagement, and improving comprehension. It is designed to transform your video content by adding dynamic, animated subtitles that not only make your videos more accessible but also significantly enhance viewer engagement and comprehension."
 icon: "map"
 ---
 
-## Overview
-
-AI Subtitle is designed to transform your video content by adding dynamic, animated subtitles that not only make your videos more accessible but also significantly enhance viewer engagement and comprehension. Here are some key
-
-<video
-  autoPlay
-  muted
-  loop
-  playsInline
-  className="w-full aspect-video rounded-xl"
-  src="/images/subtitle.mp4"
-></video>
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "12px",
+  }}
+>
+  <div style={{ textAlign: "center" }}>
+    <img
+      src="https://d4up8b6dpeb61.cloudfront.net/gifs/focusFlash.gif"
+      alt="Focus Flash"
+      style={{
+        width: "100%",
+        maxWidth: "170px",
+        borderRadius: "12px",
+        margin: "0",
+        padding: "0",
+      }}
+    />
+    <h3 style={{ marginTop: "5px", paddingTop: "0" }}>Focus Flash</h3>
+  </div>
+  <div style={{ textAlign: "center" }}>
+    <img
+      src="https://d4up8b6dpeb61.cloudfront.net/gifs/harmozi.gif"
+      alt="Harmozi"
+      style={{
+        width: "100%",
+        maxWidth: "170px",
+        borderRadius: "12px",
+        margin: "0",
+        padding: "0",
+      }}
+    />
+    <h3 style={{ marginTop: "5px", paddingTop: "0" }}>Harmozi</h3>
+  </div>
+  <div style={{ textAlign: "center" }}>
+    <img
+      src="https://d4up8b6dpeb61.cloudfront.net/gifs/pulse.gif"
+      alt="Pulse"
+      style={{
+        width: "100%",
+        maxWidth: "170px",
+        borderRadius: "12px",
+        margin: "0",
+        padding: "0",
+      }}
+    />
+    <h3 style={{ marginTop: "5px", paddingTop: "0" }}>Pulse</h3>
+  </div>
+  <div style={{ textAlign: "center" }}>
+    <img
+      src="https://d4up8b6dpeb61.cloudfront.net/gifs/filler.gif"
+      alt="Filler"
+      style={{
+        width: "100%",
+        maxWidth: "170px",
+        borderRadius: "12px",
+        margin: "0",
+        padding: "0",
+      }}
+    />
+    <h3 style={{ marginTop: "5px", paddingTop: "0" }}>Filler</h3>
+  </div>
+</div>
 
 ## How to Create a Video Subtitle
 
@@ -50,6 +102,10 @@ x-api-key: <your_api_key>
 - **position** (STRING): Position of subtitles on the video. Default is "bottom-center". Options include "bottom-center", "top-center", "middle-center".
 - **fontSize** (STRING): Font size for subtitles. Default is "m". Options include "s", "m", "l", "xl".
 
+<Info>
+  If you want to see preview of the subtitle styles, you can go to the [AI
+  Subtitle](../AIsubtitle/subtitleStyle) page.
+</Info>
 ## Example Request
 
 ```json

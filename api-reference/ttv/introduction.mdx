@@ -1,100 +1,226 @@
 ---
-title: "Introduction"
-description: "AI Clipping is an advanced tool designed to transform long-form videos into short, captivating clips by automatically detecting and extracting the most engaging moments. It is ideal for creating highlight reels, trailers, or social media snippets, ensuring that your audience stays engaged with the best parts of your content."
+title: "Overview"
+description: "AI Text-to-Video API enables the seamless transformation of textual input into dynamic, visually rich videos using advanced AI and machine learning. It processes text using NLP to understand context and sentiment, generating realistic or animated scenes, character animations with lip-syncing, and synchronized voiceovers. The API supports customization of styles, transitions, branding, and sound effects, while offering multi-language support and real-time rendering. "
 icon: "map"
 ---
 
-## Overview
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "12px",
+  }}
+>
+  <div style={{ textAlign: "center" }}>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    style={{ width: "170px", borderRadius: "12px" }}
+    src="https://d4up8b6dpeb61.cloudfront.net/framer/ai_text_to_video_3.mp4"
+  ></video>
+</div>
+<div style={{ textAlign: "center" }}>
+    <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    style={{ width: "170px",  borderRadius: "12px" }}
+    src="https://d4up8b6dpeb61.cloudfront.net/framer/ai_text_to_video_1.mp4"
 
-AI Clipping leverages state-of-the-art AI algorithms to automatically detect and extract the most engaging moments from your videos. This tool is perfect for creating highlight reels, trailers, or social media snippets, ensuring your audience remains captivated by the best parts of your content. The AI is trained to recognize key moments based on visual and audio cues, making it highly effective for diverse content types.
+> </video>
 
-<video
-  autoPlay
-  muted
-  loop
-  playsInline
-  className="w-full aspect-video rounded-xl"
-  src="/images/subtitle.mp4"
-></video>
+</div>
+<div style={{ textAlign: "center" }}>
+    <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    style={{ width: "170px",  borderRadius: "12px" }}
+    src="https://d4up8b6dpeb61.cloudfront.net/framer/ai_text_to_video_4.mp4"
 
-## How to Create a Video Clip
+> </video>
 
-To create a video clip using AI Clipping, send a POST request to the specified endpoint with the required parameters.
+</div>
+<div style={{ textAlign: "center" }}>
+    <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    style={{ width: "170px",  borderRadius: "12px" }}
+    src="https://d4up8b6dpeb61.cloudfront.net/framer/ai_text_to_video_5.mp4"
 
-**Base URL : `https://engine.quickreel.io/api/v2`**
+> </video>
 
-**Endpoint : `/clip`**
+  </div>
+</div>
 
-**Method : `POST`**
+## Getting Started
 
-**Headers :**
+<Steps>
+  <Step title="Get Available Voices">
+    First, retrieve the list of available voices by making a GET request to:
+    ```bash
+    GET https://engine.quickreel.io/api/v2/constants/voices
+    ```
+    This will return over 800 voices with their details including:
+    - voiceId (required for next step)
+    - name
+    - gender
+    - languageCode
+    - style
+    - sampleVoiceUrl
 
-```plaintext
-Content-Type: application/json
-x-api-key: <your_api_key>
-```
+    <Info>
+      For Getting the list of voices, Please refer to the [Voices Page](/api-reference/tts/voices).
+    </Info>
 
-**Request Body Parameters**
+  </Step>
 
-| Key                | Data Type | Description                                                                                                                                                                             | Mandatory |
-| ------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| videoUrl           | STRING    | URL of the source video (YouTube link or video file URL)                                                                                                                                | Required  |
-| webhookUrl         | STRING    | URL to receive processing updates                                                                                                                                                       | Required  |
-| language           | STRING    | Preferred language for subtitles. Supported languages include: Bulgarian, Catalan, Chinese (Mandarin, Simplified), Chinese (Mandarin, Traditional), Czech, Danish, Dutch, English, etc. | Required  |
-| subtitleStyles     | OBJECT    | Customize subtitle appearance. Includes `template`, `position`, and `fontSize`.                                                                                                         | Optional  |
-| additionalFeatures | OBJECT    | Additional video processing features. Includes `addBgm`, `addBroll`, `removeFillerWords`, `removeSilenceParts`, and `addHook`.                                                          | Optional  |
+  <Step title="Create Text-to-Video Request">
+    Send a POST request with your configuration:
 
-#### Subtitle Styles
+    **Base URL:** `https://engine.quickreel.io/api/v2`
 
-- **template** (STRING): Subtitle template style. Default is "productive". Options include "none", "harmozi", "pulse", "filler", "whisperer", "marineShift", "sonic", "spotlight", "focusFlash", "inflate", "boxd", "productive", "beast", "impact", "fade", "typewriter".
-- **position** (STRING): Position of subtitles on the video. Default is "bottom-center". Options include "bottom-center", "top-center", "middle-center".
-- **fontSize** (STRING): Font size for subtitles. Default is "m". Options include "s", "m", "l", "xl".
+    **Endpoint:** `/ttv`
 
-#### Additional Features
+    **Method:** `POST`
 
-- **addBgm** (BOOLEAN): Add background music to the video. Default is false.
-- **addBroll** (BOOLEAN): Add B-roll footage to the video. Default is false.
-- **removeFillerWords** (BOOLEAN): Remove filler words from the video. Default is false.
-- **removeSilenceParts** (BOOLEAN): Remove silence parts from the video. Default is false.
-- **addHook** (BOOLEAN): Add a hook to the video. Default is false.
+    **Headers:**
+    ```plaintext
+    Content-Type: application/json
+    x-api-key: <your_api_key>
+    ```
 
-## Example Request
+    **Request Body Parameters**
+
+    | Key                | Type     | Description                                                | Required |
+    |-------------------|----------|------------------------------------------------------------|----------|
+    | voiceId           | STRING   | Voice ID from step 1 (e.g., "386a7b80-1001-4017-bb51-49b3428ab8f4") | Yes |
+    | script/prompt     | STRING   | Either provide a script directly or a prompt to generate content | Yes (one of them) |
+    | webhookUrl        | STRING   | URL to receive processing updates                          | Yes |
+    | visualStyle       | STRING   | Visual style for video generation (see options below)      | No |
+    | subtitleStyles    | OBJECT   | Customize subtitle appearance                              | No |
+    | additionalFeatures| OBJECT   | Additional processing options                              | No |
+
+    **Subtitle Styles**
+
+    - **template** (STRING): Subtitle template style. Default is "productive". Options include "none", "harmozi", "pulse", "filler", "whisperer", "marineShift", "sonic", "spotlight", "focusFlash", "inflate", "boxd", "productive", "beast", "impact", "fade", "typewriter".
+    - **position** (STRING): Position of subtitles on the video. Default is "bottom-center". Options include "bottom-center", "top-center", "middle-center".
+    - **fontSize** (STRING): Font size for subtitles. Default is "m". Options include "s", "m", "l", "xl".
+
+    <Info>
+      If you want to see preview of the subtitle styles, you can go to the [AI
+      Subtitle Page](../AIsubtitle/subtitleStyle).
+    </Info>
+
+    **Visual Style Options:** (STRING):Visual style for video generation. Default is "realism". Options include "realism", "anime", "cyberpunk", "comic", "fantasy", "scifi", "lego", "pixel_art", "line_art", "renaissance", "medieval_painting", "wes_anderson", "anime_figures", "porcelain".
+
+    <Info>
+      If you want to see preview of the visual styles, you can go to the [Visual Style Page](../ttv/visualStyle).
+    </Info>
+
+**Example Request:**
 
 ```json
 {
-  "videoUrl": "https://www.youtube.com/watch?v=example",
-  "webhookUrl": "https://your-callback-url.com",
-  "language": "english",
+  "voiceId": "386a7b80-1001-4017-bb51-49b3428ab8f4",
+  "script": "Your video script content here",
+  "webhookUrl": "https://your-webhook-url.com",
+  "visualStyle": "realism",
   "subtitleStyles": {
     "template": "productive",
     "position": "bottom-center",
     "fontSize": "m"
   },
   "additionalFeatures": {
-    "addBgm": false,
-    "addBroll": false,
-    "removeFillerWords": false,
-    "removeSilenceParts": false,
-    "addHook": false
+    "addBgm": false
   }
 }
 ```
+
+  </Step>
+
+</Steps>
 
 ## Response
 
 Upon successful processing, the webhook URL will receive a response with the status and details of the processed video. The response includes metadata about the clip, such as duration, resolution, and a direct link to download the processed video.
 
-## Advanced Use Cases
+## Advanced Features & Capabilities
 
-- **Dynamic Content Creation**: Use AI Clipping to generate dynamic content for social media campaigns, adapting clips to different platforms' requirements.
-- **Automated Content Curation**: Integrate AI Clipping into content management systems to automate the curation of video highlights for news or entertainment platforms.
-- **Enhanced Viewer Engagement**: Utilize the additional features to tailor video content that maximizes viewer engagement through strategic use of hooks and background elements.
+<CardGroup cols={2}>
+  <Card title="AI Script Generation" icon="wand-magic-sparkles">
+    Transform simple prompts into engaging video scripts using advanced language
+    models. Perfect for quick content creation without writing detailed scripts.
+  </Card>
+  <Card title="Visual Style Customization" icon="paintbrush">
+    Choose from 15+ unique visual styles including realism, anime, cyberpunk,
+    and more to match your brand aesthetic and content theme.
+  </Card>
+  <Card title="Smart Subtitle Generation" icon="closed-captioning">
+    Automatic subtitle generation with 16 customizable templates and multiple
+    positioning options for maximum viewer engagement.
+  </Card>
+  <Card title="Multi-Voice Support" icon="microphone">
+    Access to 800+ AI voices across different languages, accents, and styles for
+    perfect narration matching.
+  </Card>
+</CardGroup>
 
-## Additional Information
+## Use Cases & Applications
 
-For more details on how to use AI Clipping and other features, refer to the [API Reference](../gettingStarted).
+<CardGroup cols={3}>
+  <Card title="Marketing" icon="bullhorn">
+    - Product demonstrations - Social media content - Brand storytelling -
+    Educational content
+  </Card>
+  <Card title="Education" icon="graduation-cap">
+    - Course materials - Tutorial videos - Learning resources - Student guides
+  </Card>
+  <Card title="Business" icon="briefcase">
+    - Training videos - Company presentations - Client communications - Internal
+    updates
+  </Card>
+</CardGroup>
+
+## Best Practices
+
+<Card title="Tips for Optimal Results" icon="star">
+  - Keep scripts concise and focused for better visual generation - Test
+  different visual styles with sample content first - Use appropriate voice
+  styles matching your content tone - Consider your target platform when
+  selecting video dimensions - Leverage subtitle templates for better engagement
+</Card>
+
+## Performance & Limitations
+
+<CardGroup cols={2}>
+  <Card title="Processing Time" icon="clock">
+    Average processing time varies based on: - Script length - Visual style
+    complexity - Selected features - Queue status
+  </Card>
+  <Card title="Quality Assurance" icon="shield-check">
+    Each video undergoes: - Visual quality checks - Audio sync verification -
+    Subtitle alignment - Performance optimization
+  </Card>
+</CardGroup>
 
 <Note>
-  If you have any questions or need support, please contact us at
-  [support@quickreel.io](mailto:support@quickreel.io).
+  For optimal results, we recommend: - Maximum script length of 1000 words per
+  request - Clear, well-structured prompts - High-quality reference materials
+  when needed
 </Note>
+
+<Card
+  title="Need Advanced Support?"
+  icon="headset"
+  href="https://discord.com/invite/HXQ92SDamV"
+>
+  Join our Discord community for: - Technical assistance - Feature requests -
+  Best practice sharing - Community tips and tricks
+</Card>

@@ -1,21 +1,63 @@
 ---
-title: "Introduction"
-description: "AI Clipping is an advanced tool designed to transform long-form videos into short, captivating clips by automatically detecting and extracting the most engaging moments. It is ideal for creating highlight reels, trailers, or social media snippets, ensuring that your audience stays engaged with the best parts of your content."
+title: "Overview"
 icon: "map"
+description: "AI Clipping leverages state-of-the-art AI algorithms to automatically detect and extract the most engaging moments from your videos. This tool is perfect for creating highlight reels, trailers, or social media snippets, ensuring your audience remains captivated by the best parts of your content. The AI is trained to recognize key moments based on visual and audio cues, making it highly effective for diverse content types."
 ---
 
-## Overview
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "12px",
+  }}
+>
+  <div style={{ textAlign: "center" }}>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    style={{ width: "170px", borderRadius: "12px" }}
+    src="https://d4up8b6dpeb61.cloudfront.net/framer/ai_clip_landing_page_1.mp4"
+  ></video>
+</div>
+<div style={{ textAlign: "center" }}>
+    <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    style={{ width: "170px",  borderRadius: "12px" }}
+    src="https://d4up8b6dpeb61.cloudfront.net/framer/ai_clip_landing_page_2.mp4"
 
-AI Clipping leverages state-of-the-art AI algorithms to automatically detect and extract the most engaging moments from your videos. This tool is perfect for creating highlight reels, trailers, or social media snippets, ensuring your audience remains captivated by the best parts of your content. The AI is trained to recognize key moments based on visual and audio cues, making it highly effective for diverse content types.
+> </video>
 
-<video
-  autoPlay
-  muted
-  loop
-  playsInline
-  className="w-full aspect-video rounded-xl"
-  src="/images/subtitle.mp4"
-></video>
+</div>
+<div style={{ textAlign: "center" }}>
+    <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    style={{ width: "170px",  borderRadius: "12px" }}
+    src="https://d4up8b6dpeb61.cloudfront.net/framer/ai_clip_landing_page_3.mp4"
+
+> </video>
+
+</div>
+<div style={{ textAlign: "center" }}>
+    <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    style={{ width: "170px",  borderRadius: "12px" }}
+    src="https://d4up8b6dpeb61.cloudfront.net/framer/ai_clip_landing_page_4.mp4"
+
+> </video>
+
+  </div>
+</div>
 
 ## How to Create a Video Clip
 
@@ -49,6 +91,11 @@ x-api-key: <your_api_key>
 - **template** (STRING): Subtitle template style. Default is "productive". Options include "none", "harmozi", "pulse", "filler", "whisperer", "marineShift", "sonic", "spotlight", "focusFlash", "inflate", "boxd", "productive", "beast", "impact", "fade", "typewriter".
 - **position** (STRING): Position of subtitles on the video. Default is "bottom-center". Options include "bottom-center", "top-center", "middle-center".
 - **fontSize** (STRING): Font size for subtitles. Default is "m". Options include "s", "m", "l", "xl".
+
+<Info>
+  If you want to see preview of the subtitle styles, you can go to the [AI
+  Subtitle Page](../AIsubtitle/subtitleStyle).
+</Info>
 
 #### Additional Features
 
@@ -90,9 +137,13 @@ Upon successful processing, the webhook URL will receive a response with the sta
 - **Automated Content Curation**: Integrate AI Clipping into content management systems to automate the curation of video highlights for news or entertainment platforms.
 - **Enhanced Viewer Engagement**: Utilize the additional features to tailor video content that maximizes viewer engagement through strategic use of hooks and background elements.
 
-## Additional Information
-
-For more details on how to use AI Clipping and other features, refer to the [API Reference](../gettingStarted).
+<Info>
+  For any error handling, please refer to the [Error Handling Page](/error).
+</Info>
+<Info>
+  For handling webhook responses, please refer to the [Webhook Handling
+  Page](/webhook).
+</Info>
 
 <Note>
   If you have any questions or need support, please contact us at

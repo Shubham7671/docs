@@ -1,0 +1,53 @@
+---
+title: "Response"
+description: "Webhook or hit the get project by project id endpoint to get the response"
+icon: "webhook"
+---
+
+### Get Project By Project Id
+
+You can also hit the get project endpoint to get the response.
+Refer to the [Get Project Page](/getProject).
+
+### Webhook Response
+
+When Quickreel completes processing your request, it sends a webhook response to the URL specified in the `webhookUrl` parameter. Below is an example of the response you will receive:
+
+```json
+{
+  "projectId": "676409ad10ded0f9fc89d224",
+  "status": "completed",
+  "createdAt": "2024-12-19T11:55:25.602Z",
+  "completedAt": "2024-12-19T14:22:35.533Z",
+  "error": null,
+  "outputs": [
+    {
+      "id": "67640a41df9247bc89de7813",
+      "audioUrl": "https://qr-be-api-upload.s3.us-east-1.amazonaws.com/67618d230847a22a7550faf9/676409ad10ded0f9fc89d224/67640a41df9247bc89de7813_final_hook.mp4"
+    }
+  ]
+}
+```
+
+**Response Attributes:**
+
+- `projectId`: The unique identifier of the project.
+- `status`: The status of the project.
+- `createdAt`: The date and time the request was created.
+- `completedAt`: The date and time the project was completed.
+- `error`: Any error information if applicable.
+- `outputs`: An array containing details of each output.
+  - `id`: The unique identifier of the output.
+  - `audioUrl`: The URL to access the audio.
+
+### Note on Response Handling:
+
+<Warning>
+  You will have to send a 200 status code immediately after receiving the
+  response.
+</Warning>
+
+<Info>
+  If you want more details on handling webhook responses, refer to the [Webhook
+  Handling Page](/webhook) in the documentation.
+</Info>
