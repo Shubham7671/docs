@@ -16,7 +16,7 @@
     }
   ],
   "paths": {
-    "/subtitle": {
+    "/subtitles": {
       "post": {
         "summary": "Request video processing",
         "description": "",
@@ -170,7 +170,8 @@
                   "beast",
                   "impact",
                   "fade",
-                  "typewriter"
+                  "typewriter",
+                  "impact2"
                 ]
               },
               "position": {
