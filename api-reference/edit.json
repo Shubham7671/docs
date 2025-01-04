@@ -1,0 +1,324 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Video Processing API",
+    "description": "API for processing video clips from video URLs or YouTube URLs",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://engine.quickreel.io/api/v2"
+    }
+  ],
+  "security": [
+    {
+      "apiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/edit": {
+      "post": {
+        "summary": "Request video editing",
+        "description": "",
+        "requestBody": {
+          "description": "Request payload for video editing",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VideoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Request created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request: Missing required fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized: API key invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error: Please try again later or contact support",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests: Please slow down your request rate.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "VideoRequest": {
+        "type": "object",
+        "properties": {
+          "videoUrl": {
+            "type": "string",
+            "description": "Video URL or YouTube URL to be edited ( max 2 minutes ) additionaly you can use the trim property to trim the video from the start and end to cap it to 2 minutes. ( end - start <= 2 minutes )",
+            "example": "https://www.youtube.com/watch?v=eY4pgeNBhk4"
+          },
+          "language": {
+            "type": "string",
+            "description": "Preferred language for subtitles",
+            "example": "english",
+            "enum": [
+              "bulgarian",
+              "catalan",
+              "chinese (mandarin, simplified)",
+              "chinese (mandarin, traditional)",
+              "czech",
+              "danish",
+              "dutch",
+              "english",
+              "estonian",
+              "finnish",
+              "flemish",
+              "french",
+              "german",
+              "german (switzerland)",
+              "greek",
+              "hindi",
+              "hungarian",
+              "indonesian",
+              "italian",
+              "japanese",
+              "korean",
+              "latvian",
+              "lithuanian",
+              "malay",
+              "multilingual (spanish + english)",
+              "norwegian",
+              "polish",
+              "portuguese",
+              "romanian",
+              "russian",
+              "slovak",
+              "spanish",
+              "swedish",
+              "thai",
+              "turkish",
+              "ukrainian",
+              "vietnamese"
+            ]
+          },
+          "webhookUrl": {
+            "type": "string",
+            "description": "Webhook URL for receiving processing updates",
+            "example": "https://webhook-test.com/05674b0b229c29199fec105309a00e16"
+          },
+          "template": {
+            "type": "string",
+            "description": "Template to use for the video editing (cinematic, vivid, impact, storyteller, kinetic, split). For more information on the templates, please visit [Template Style](/api-reference/AIedit/templateStyle)",
+            "example": "cinematic",
+            "enum": [
+              "cinematic",
+              "vivid",
+              "impact",
+              "storyteller",
+              "kinetic",
+              "split"
+            ]
+          },
+          "additionalFeatures": {
+            "type": "object",
+            "properties": {
+              "addBgm": {
+                "type": "boolean",
+                "description": "Add background music to the video",
+                "example": "false",
+                "default": false
+              },
+
+              "removeFillerWords": {
+                "type": "boolean",
+                "description": "Remove filler words from the video",
+                "example": "false",
+                "default": false
+              },
+              "removeSilenceParts": {
+                "type": "boolean",
+                "description": "Remove silence parts from the video",
+                "example": "false",
+                "default": false
+              }
+            }
+          },
+          "trim": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "number",
+                "description": "Video start time in seconds ( start >= 0 )",
+                "example": 5
+              },
+
+              "end": {
+                "type": "number",
+                "description": "Video end time in seconds ( end - start <= 2 minutes )",
+                "example": 10
+              }
+            }
+          }
+        },
+        "required": ["videoUrl", "webhookUrl", "language", "template"]
+      },
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status of the request",
+            "example": "created"
+          },
+          "message": {
+            "type": "string",
+            "description": "Success message",
+            "example": "project created successfully"
+          },
+          "projectId": {
+            "type": "string",
+            "description": "Project ID",
+            "example": "667bbc6973e392d3f7f6f620"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message"
+              }
+            }
+          }
+        }
+      },
+
+      "NotFoundResponse404": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message",
+                "example": "Video request not found."
+              }
+            }
+          }
+        }
+      },
+
+      "BadRequestErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message",
+                "example": "Bad Request: Missing required fields"
+              }
+            }
+          }
+        }
+      },
+      "UnauthorizedErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message",
+                "example": "Unauthorized: API key invalid"
+              }
+            }
+          }
+        }
+      },
+
+      "InternalServerErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message",
+                "example": "Internal Server Error: Please try again later or contact support"
+              }
+            }
+          }
+        }
+      },
+      "TooManyRequestsErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message",
+                "example": "Too Many Requests: Please slow down your request rate."
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
+      }
+    }
+  }
+}

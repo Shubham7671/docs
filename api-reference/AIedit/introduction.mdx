@@ -1,0 +1,142 @@
+---
+title: "Overview"
+description: "Transform your videos with AI-powered editing capabilities. Create engaging content with customizable templates, automated enhancements, and intelligent processing features."
+icon: "map"
+---
+
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "12px",
+  }}
+>
+  <div style={{ textAlign: "center" }}>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    style={{ width: "170px", borderRadius: "12px" }}
+    src="https://d4up8b6dpeb61.cloudfront.net/videos/ai-edit-vivid.mp4"
+  ></video>
+</div>
+<div style={{ textAlign: "center" }}>
+    <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    style={{ width: "170px",  borderRadius: "12px" }}
+    src="https://d4up8b6dpeb61.cloudfront.net/videos/ai-edit-impact.mp4"
+
+> </video>
+
+</div>
+<div style={{ textAlign: "center" }}>
+    <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    style={{ width: "170px",  borderRadius: "12px" }}
+    src="https://d4up8b6dpeb61.cloudfront.net/videos/ai-edit-kinetic.mp4"
+
+> </video>
+
+</div>
+<div style={{ textAlign: "center" }}>
+    <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    style={{ width: "170px",  borderRadius: "12px" }}
+    src="https://d4up8b6dpeb61.cloudfront.net/videos/ai-edit-cinematic.mp4"
+
+> </video>
+
+  </div>
+</div>
+## How to Edit Videos
+
+Transform your videos using our AI-powered editing API. Simply send a POST request with your video details and let our system handle the rest.
+
+**Base URL : `https://engine.quickreel.io/api/v2`**
+
+**Endpoint : `/edit`**
+
+**Method : `POST`**
+
+**Headers :**
+
+```plaintext
+Content-Type: application/json
+x-api-key: <your_api_key>
+```
+
+**Request Body Parameters**
+
+| Key                | Data Type | Description                                                                       | Mandatory |
+| ------------------ | --------- | --------------------------------------------------------------------------------- | --------- |
+| videoUrl           | STRING    | Video URL or YouTube URL (max 2 minutes)                                          | Required  |
+| webhookUrl         | STRING    | URL to receive processing updates                                                 | Required  |
+| language           | STRING    | Preferred language for subtitles (supports 30+ languages)                         | Required  |
+| template           | STRING    | Video editing template (cinematic, vivid, impact, storyteller, kinetic, split)    | Required  |
+| additionalFeatures | OBJECT    | Optional features like background music, filler word removal, and silence removal | Optional  |
+| trim               | OBJECT    | Trim video using start and end times in seconds                                   | Optional  |
+
+For more details about template and their visual effects, visit the
+[Template Style](/api-reference/AIedit/templateStyle) page.
+
+<Warning>
+  The maximum video duration is 2 minutes. Additionally, you can select the
+  desired segment by providing start and end times in seconds in the trim object
+  but video duration (end - start) should be less than equal to 2 minutes.
+</Warning>
+
+## Example Request
+
+```json
+{
+  "videoUrl": "https://www.youtube.com/watch?v=eY4pgeNBhk4",
+  "webhookUrl": "https://webhook-test.com/05674b0b229c29199fec105309a00e16",
+  "language": "english",
+  "template": "cinematic",
+  "additionalFeatures": {
+    "addBgm": true,
+    "removeFillerWords": true,
+    "removeSilenceParts": true
+  },
+  "trim": {
+    "start": 0,
+    "end": 120
+  }
+}
+```
+
+## Key Features
+
+- **Multiple Templates**: Choose from 6 unique editing styles to match your content's tone
+- **Smart Trimming**: Easily trim videos while maintaining the 2-minute limit
+- **Language Support**: Process videos in 30+ languages
+- **Enhancement Features**:
+  - Add background music
+  - Remove filler words
+  - Eliminate silence
+- **Webhook Updates**: Receive real-time processing status updates
+
+## Use Cases
+
+- **Social Media Content**: Create engaging short-form videos for platforms like TikTok, Instagram, and YouTube Shorts
+- **Marketing Videos**: Transform long promotional content into impactful short clips
+- **Educational Content**: Create concise, engaging learning materials
+- **Product Demos**: Highlight key features in brief, attention-grabbing videos
+- **Interview Highlights**: Extract and enhance the most important moments
+
+For detailed API documentation and advanced usage, refer to our [API Reference](../gettingStarted).
+
+<Note>
+  Need help? Contact our support team at
+  [support@quickreel.io](mailto:support@quickreel.io)
+</Note>

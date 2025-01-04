@@ -56,6 +56,16 @@
           ]
         },
         {
+          "group": "AI Edit",
+          "icon": "wand-magic-sparkles",
+          "pages": [
+            "api-reference/AIedit/introduction",
+            "api-reference/AIedit/create",
+            "api-reference/AIedit/templateStyle",
+            "api-reference/AIedit/webhook"
+          ]
+        },
+        {
           "group": "AI Subtitling",
           "icon": "closed-captioning",
           "pages": [
