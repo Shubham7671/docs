@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://engine.quickreel.io/api/v2"
+      "url": "https://mango.quickreel.io/api/v2"
     }
   ],
   "paths": {

@@ -15,7 +15,7 @@ description: "Welcome to the QuickReel API! This guide will help you integrate o
 All API requests should be made to:
 
 ```bash
-https://engine.quickreel.io/api/v2
+https://mango.quickreel.io/api/v2
 ```
 
 ### 3. Authentication
@@ -23,7 +23,7 @@ https://engine.quickreel.io/api/v2
 <CodeGroup>
 ```bash cURL
 curl --request POST \
-  --url https://engine.quickreel.io/api/v2/clip \
+  --url https://mango.quickreel.io/api/v2/clip \
   --header 'x-api-key: YOUR_API_KEY' \
   --header 'Content-Type: application/json'
 ```
@@ -74,7 +74,7 @@ When you provide a `webhookUrl` in your request, we'll send the response to your
 You can also retrieve results by making a GET request to `/projects/{projectId}`. More information on getting your projects by projectId can be found in the [Get Projects](/getProject) section.
 
 ```bash
-GET https://engine.quickreel.io/api/v2/projects/{projectId}
+GET https://mango.quickreel.io/api/v2/projects/{projectId}
 ```
 
 <Note>
