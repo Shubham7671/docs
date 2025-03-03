@@ -18,7 +18,7 @@ icon: "map"
     loop
     playsInline
     style={{ width: "170px", borderRadius: "12px" }}
-    src="https://d4up8b6dpeb61.cloudfront.net/videos/ai-edit-vivid.mp4"
+    src="https://d4up8b6dpeb61.cloudfront.net/videos/ai-edit-vivid2.mp4"
   ></video>
 </div>
 <div style={{ textAlign: "center" }}>
@@ -28,7 +28,7 @@ icon: "map"
     loop
     playsInline
     style={{ width: "170px",  borderRadius: "12px" }}
-    src="https://d4up8b6dpeb61.cloudfront.net/videos/ai-edit-impact.mp4"
+    src="https://d4up8b6dpeb61.cloudfront.net/videos/ai-edit-chillguy.mp4"
 
 > </video>
 
@@ -40,7 +40,7 @@ icon: "map"
     loop
     playsInline
     style={{ width: "170px",  borderRadius: "12px" }}
-    src="https://d4up8b6dpeb61.cloudfront.net/videos/ai-edit-kinetic.mp4"
+    src="https://d4up8b6dpeb61.cloudfront.net/videos/ai-edit-vortex.mp4"
 
 > </video>
 
@@ -77,14 +77,20 @@ x-api-key: <your_api_key>
 
 **Request Body Parameters**
 
-| Key                | Data Type | Description                                                                       | Mandatory |
-| ------------------ | --------- | --------------------------------------------------------------------------------- | --------- |
-| videoUrl           | STRING    | Video URL or YouTube URL (max 2 minutes)                                          | Required  |
-| webhookUrl         | STRING    | URL to receive processing updates                                                 | Required  |
-| language           | STRING    | Preferred language for subtitles (supports 30+ languages)                         | Required  |
-| template           | STRING    | Video editing template (cinematic, vivid, impact, storyteller, kinetic, split)    | Required  |
-| additionalFeatures | OBJECT    | Optional features like background music, filler word removal, and silence removal | Optional  |
-| trim               | OBJECT    | Trim video using start and end times in seconds                                   | Optional  |
+| Key                    | Data Type | Description                                                                                                                     | Mandatory |
+| ---------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| videoUrl               | STRING    | Video URL or YouTube URL (max 2 minutes)                                                                                        | Required  |
+| webhookUrl             | STRING    | URL to receive processing updates                                                                                               | Required  |
+| language               | STRING    | Preferred language for subtitles (supports 30+ languages)                                                                       | Required  |
+| template               | STRING    | Video editing template (cinematic, vivid, impact, storyteller, kinetic, split, movienight, vivid2, chillguy, chillguy2, vortex) | Required  |
+| brollFrequency         | STRING    | Broll Frequency ("low", "medium", "high"). Default: "medium"                                                                    | Optional  |
+| subtitleHighlightColor | STRING    | The color (in hexadecimal) used to highlight subtitles (e.g., #000000)                                                          | Optional  |
+| title                  | STRING    | Title of the video (works only for vivid, vivid2, storyteller, movienight templates)                                            | Optional  |
+| duration               | NUMBER    | Duration to display the title (works only for vivid, vivid2)                                                                    | Optional  |
+| additionalFeatures     | OBJECT    | Optional features like background music, filler word removal, and silence removal                                               | Optional  |
+| additionalSettings     | OBJECT    | Settings for sound effects volume and speaker detection                                                                         | Optional  |
+| trim                   | OBJECT    | Trim video using start and end times in seconds                                                                                 | Optional  |
+| bgVideoSettings        | OBJECT    | Background video settings (works only for satisfying template)                                                                  | Optional  |
 
 For more details about template and their visual effects, visit the
 [Template Style](/api-reference/AIedit/templateStyle) page.
@@ -103,10 +109,15 @@ For more details about template and their visual effects, visit the
   "webhookUrl": "https://webhook-test.com/05674b0b229c29199fec105309a00e16",
   "language": "english",
   "template": "cinematic",
+  "brollFrequency": "medium",
   "additionalFeatures": {
     "addBgm": true,
     "removeFillerWords": true,
     "removeSilenceParts": true
+  },
+  "additionalSettings": {
+    "soundEffectsVolume": 0.5,
+    "applySpearkerDetection": true
   },
   "trim": {
     "start": 0,
@@ -117,13 +128,16 @@ For more details about template and their visual effects, visit the
 
 ## Key Features
 
-- **Multiple Templates**: Choose from 6 unique editing styles to match your content's tone
+- **Multiple Templates**: Choose from various unique editing styles including cinematic, vivid, impact, storyteller, kinetic, split, movienight, and more
 - **Smart Trimming**: Easily trim videos while maintaining the 2-minute limit
 - **Language Support**: Process videos in 30+ languages
 - **Enhancement Features**:
   - Add background music
   - Remove filler words
   - Eliminate silence
+  - Adjust sound effects volume
+  - Speaker detection
+- **Background Video Options**: Customize background video appearance and positioning (for satisfying template)
 - **Webhook Updates**: Receive real-time processing status updates
 
 ## Use Cases

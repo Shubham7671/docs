@@ -154,9 +154,40 @@
               "impact",
               "storyteller",
               "kinetic",
-              "split"
+              "split",
+              "movienight",
+              "vivid2",
+              "chillguy",
+              "chillguy2",
+              "vortex"
             ]
           },
+          "brollFrequency": {
+            "type": "string",
+            "description": "Broll Frequency (low, medium, high)",
+            "example": "low",
+            "enum": ["low", "medium", "high"],
+            "default": "medium"
+          },
+
+          "subtitleHighlightColor": {
+            "type": "string",
+            "description": "The color (in hexadecimal or other format) used to highlight subtitles in the video.",
+            "example": "#000000"
+          },
+
+          "title": {
+            "type": "string",
+            "description": "The title of the video Works only for vivid ,vivid2,storyteller,movienight templates",
+            "example": "My Video"
+          },
+
+          "duration": {
+            "type": "number",
+            "description": "The duration till to display the title works only for vivid ,vivid2",
+            "example": 10
+          },
+
           "additionalFeatures": {
             "type": "object",
             "properties": {
@@ -181,6 +212,25 @@
               }
             }
           },
+          "additionalSettings": {
+            "type": "object",
+            "properties": {
+              "soundEffectsVolume": {
+                "type": "number",
+                "description": "The volume of the sound effects in the video",
+                "example": "0.5",
+                "default": 0.5
+              },
+
+              "applySpearkerDetection": {
+                "type": "boolean",
+                "description": "Apply speaker detection to the video",
+                "example": "true",
+                "default": true
+              }
+            }
+          },
+
           "trim": {
             "type": "object",
             "properties": {
@@ -196,6 +246,63 @@
                 "example": 10
               }
             }
+          },
+
+          "bgVideoSettings": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The type of the background video (satisfying)",
+                "example": "satisfying",
+                "default": "satisfying"
+              },
+
+              "url": {
+                "type": "string",
+                "description": "The url of the background video",
+                "example": "https://www.samplelib.com/lib/preview/mp4/sample-30s.mp4"
+              },
+              "shape": {
+                "type": "string",
+                "description": "The shape or layout style for the background video (e.g. rectangle, circle, square)",
+                "example": "rectangle",
+                "default": "square",
+                "enum": ["rectangle", "circle", "square"]
+              },
+              "position": {
+                "type": "string",
+                "description": "he desired position on the screen for the background video (e.g., top-right, top-center, top-left, middle-center, bottom-left, bottom-center, bottom-right).",
+                "example": "top-right",
+                "default": "top-right",
+                "enum": [
+                  "top-right",
+                  "top-center",
+                  "top-left",
+                  "middle-center",
+                  "bottom-left",
+                  "bottom-center",
+                  "bottom-right"
+                ]
+              },
+              "stroke": {
+                "type": "object",
+                "description": "Defines the border (stroke) details for the background video.",
+                "properties": {
+                  "color": {
+                    "type": "string",
+                    "description": "The color of the border (stroke) in hexadecimal format.",
+                    "example": "#000000"
+                  },
+                  "width": {
+                    "type": "number",
+                    "description": "The width of the border (stroke) in pixels.",
+                    "example": 10
+                  }
+                }
+              }
+            },
+            "description": "Defines the background video's appearance and positioning works only for statisfying template"
           }
         },
         "required": ["videoUrl", "webhookUrl", "language", "template"]
