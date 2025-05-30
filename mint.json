@@ -1,129 +1,133 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
-  "name": "Quickreel API",
-  "logo": {
-    "dark": "/logo/quickreelAPIlogo.png",
-    "light": "/logo/quickreelAPIlogo.png"
-  },
-  "favicon": "/images/favicon.png",
-  "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
-    }
-  },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "https://forms.gle/xvy56QAf2Tuudh4p9"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://www.api.quickreel.io/"
-  },
-  "tabs": [],
-  "anchors": [
-    {
-      "name": "Discord",
-      "icon": "discord",
-      "url": "https://discord.com/invite/HXQ92SDamV"
+    "$schema": "https://mintlify.com/schema.json",
+    "name": "Quickreel API",
+    "logo": {
+        "dark": "/logo/quickreelAPIlogo.png",
+        "light": "/logo/quickreelAPIlogo.png"
     },
-    {
-      "name": "Product",
-      "icon": "newspaper",
-      "url": "https://app.quickreel.io/"
-    }
-  ],
-  "navigation": [
-    {
-      "group": "Get Started",
-      "pages": ["introduction", "gettingStarted", "getProject"]
-    },
-    {
-      "group": "API References",
-      "pages": [
-        {
-          "group": "AI Clip",
-          "icon": "image",
-          "pages": [
-            "api-reference/AIclipping/introduction",
-            "api-reference/AIclipping/create",
-            "api-reference/AIclipping/webhook"
-          ]
-        },
-        {
-          "group": "AI Edit",
-          "icon": "wand-magic-sparkles",
-          "pages": [
-            "api-reference/AIedit/introduction",
-            "api-reference/AIedit/create",
-            "api-reference/AIedit/templateStyle",
-            "api-reference/AIedit/webhook"
-          ]
-        },
-        {
-          "group": "AI Subtitling",
-          "icon": "closed-captioning",
-          "pages": [
-            "api-reference/AIsubtitle/introduction",
-            "api-reference/AIsubtitle/create",
-            "api-reference/AIsubtitle/subtitleStyle",
-            "api-reference/AIsubtitle/webhook"
-          ]
-        },
-        {
-          "group": "AI BGM",
-          "icon": "music",
-          "pages": [
-            "api-reference/AIbgm/introduction",
-            "api-reference/AIbgm/create",
-            "api-reference/AIbgm/webhook"
-          ]
-        },
-        {
-          "group": "AI Broll",
-          "icon": "play",
-          "pages": [
-            "api-reference/AIbroll/introduction",
-            "api-reference/AIbroll/create",
-            "api-reference/AIbroll/webhook"
-          ]
-        },
-        {
-          "group": "AI Text To Voice",
-          "icon": "text",
-          "pages": [
-            "api-reference/tts/introduction",
-            "api-reference/tts/voices",
-            "api-reference/tts/create",
-            "api-reference/tts/webhook"
-          ]
-        },
-
-        {
-          "group": "AI Text To Video",
-          "icon": "text",
-          "pages": [
-            "api-reference/ttv/introduction",
-            "api-reference/ttv/create",
-            "api-reference/ttv/visualStyle",
-            "api-reference/ttv/webhook"
-          ]
+    "favicon": "/images/favicon.png",
+    "colors": {
+        "primary": "#0D9373",
+        "light": "#07C983",
+        "dark": "#0D9373",
+        "anchors": {
+            "from": "#0D9373",
+            "to": "#07C983"
         }
-      ]
     },
-    {
-      "group": "Utilities",
-      "icon": "info",
-      "pages": ["webhook", "error"]
+    "topbarLinks": [
+        {
+            "name": "Support",
+            "url": "https://forms.gle/xvy56QAf2Tuudh4p9"
+        }
+    ],
+    "topbarCtaButton": {
+        "name": "Dashboard",
+        "url": "https://www.api.quickreel.io/"
+    },
+    "tabs": [],
+    "anchors": [
+        {
+            "name": "Discord",
+            "icon": "discord",
+            "url": "https://discord.com/invite/HXQ92SDamV"
+        },
+        {
+            "name": "Product",
+            "icon": "newspaper",
+            "url": "https://app.quickreel.io/"
+        }
+    ],
+    "navigation": [
+        {
+            "group": "Get Started",
+            "pages": ["introduction", "gettingStarted", "getProject"]
+        },
+        {
+            "group": "Our AI Tools",
+            "pages": ["api-reference/one-pager/ai-clip"]
+        },
+        {
+            "group": "API References",
+            "pages": [
+                {
+                    "group": "AI Clip",
+                    "icon": "image",
+                    "pages": [
+                        "api-reference/AIclipping/introduction",
+                        "api-reference/AIclipping/create",
+                        "api-reference/AIclipping/webhook"
+                    ]
+                },
+                {
+                    "group": "AI Edit",
+                    "icon": "wand-magic-sparkles",
+                    "pages": [
+                        "api-reference/AIedit/introduction",
+                        "api-reference/AIedit/create",
+                        "api-reference/AIedit/templateStyle",
+                        "api-reference/AIedit/webhook"
+                    ]
+                },
+                {
+                    "group": "AI Subtitling",
+                    "icon": "closed-captioning",
+                    "pages": [
+                        "api-reference/AIsubtitle/introduction",
+                        "api-reference/AIsubtitle/create",
+                        "api-reference/AIsubtitle/subtitleStyle",
+                        "api-reference/AIsubtitle/webhook"
+                    ]
+                },
+                {
+                    "group": "AI BGM",
+                    "icon": "music",
+                    "pages": [
+                        "api-reference/AIbgm/introduction",
+                        "api-reference/AIbgm/create",
+                        "api-reference/AIbgm/webhook"
+                    ]
+                },
+                {
+                    "group": "AI Broll",
+                    "icon": "play",
+                    "pages": [
+                        "api-reference/AIbroll/introduction",
+                        "api-reference/AIbroll/create",
+                        "api-reference/AIbroll/webhook"
+                    ]
+                },
+                {
+                    "group": "AI Text To Voice",
+                    "icon": "text",
+                    "pages": [
+                        "api-reference/tts/introduction",
+                        "api-reference/tts/voices",
+                        "api-reference/tts/create",
+                        "api-reference/tts/webhook"
+                    ]
+                },
+
+                {
+                    "group": "AI Text To Video",
+                    "icon": "text",
+                    "pages": [
+                        "api-reference/ttv/introduction",
+                        "api-reference/ttv/create",
+                        "api-reference/ttv/visualStyle",
+                        "api-reference/ttv/webhook"
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Utilities",
+            "icon": "info",
+            "pages": ["webhook", "error"]
+        }
+    ],
+    "footerSocials": {
+        "x": "https://x.com/QuickReelHQ",
+        "linkedin": "https://www.linkedin.com/company/quickreel/"
     }
-  ],
-  "footerSocials": {
-    "x": "https://x.com/QuickReelHQ",
-    "linkedin": "https://www.linkedin.com/company/quickreel/"
-  }
 }
