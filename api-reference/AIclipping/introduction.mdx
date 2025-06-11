@@ -83,7 +83,7 @@ x-api-key: <your_api_key>
 | videoUrl           | STRING    | URL of the source video (YouTube link or video file URL)                                                                                                                                | Required  |
 | webhookUrl         | STRING    | URL to receive processing updates                                                                                                                                                       | Required  |
 | language           | STRING    | Preferred language for subtitles. Supported languages include: Bulgarian, Catalan, Chinese (Mandarin, Simplified), Chinese (Mandarin, Traditional), Czech, Danish, Dutch, English, etc. | Required  |
-| clipSettings       | OBJECT    | Settings for clip generation. Includes `reelCount`, `prompt`, `keywords`, and `reelDuration`.                                                                                           | Optional  |
+| clipSettings       | OBJECT    | Settings for clip generation. Includes `reelsCount`, `prompt`, `keywords`, and `reelDuration`.                                                                                          | Optional  |
 | brollSettings      | OBJECT    | Settings for B-roll footage. Includes `type` and `frequency`.                                                                                                                           | Optional  |
 | bgmSettings        | OBJECT    | Settings for background music. Includes `url`, `volume`, `fadeIn`, and `fadeOut`.                                                                                                       | Optional  |
 | subtitleStyles     | OBJECT    | Customize subtitle appearance. Includes `template`, `position`, and `fontSize`.                                                                                                         | Optional  |
@@ -91,7 +91,7 @@ x-api-key: <your_api_key>
 
 #### Clip Settings
 
--   **reelCount** (INTEGER): Number of reels to generate
+-   **reelsCount** (INTEGER): Number of reels to generate
 -   **prompt** (STRING): Prompt to guide the reel generation (e.g., "A viral video about the benefits of using our product")
 -   **keywords** (ARRAY): Keywords for the generated reels (e.g., ["product", "benefits", "features"])
 -   **reelDuration** (STRING): Range of reels to generate (default: "10-30")
@@ -141,7 +141,7 @@ x-api-key: <your_api_key>
     "webhookUrl": "https://your-callback-url.com",
     "language": "english",
     "clipSettings": {
-        "reelCount": 3,
+        "reelsCount": 3,
         "prompt": "A viral video about the benefits of using our product",
         "keywords": ["product", "benefits", "features"],
         "reelDuration": "10-30"
