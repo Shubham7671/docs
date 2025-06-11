@@ -148,6 +148,7 @@
 
                     "subtitleStyles": {
                         "type": "object",
+                        "description": "Subtitle styles for the video (optional)",
                         "properties": {
                             "template": {
                                 "type": "string",
@@ -198,6 +199,7 @@
                     },
                     "additionalFeatures": {
                         "type": "object",
+                        "description": "Additional features for the video (optional)",
                         "properties": {
                             "addBgm": {
                                 "type": "boolean",
@@ -254,8 +256,7 @@
                             },
                             "reelDuration": {
                                 "type": "string",
-                                "description": "Range of reels to generate",
-                                "default": ["10-30"]
+                                "description": "Range of reels to generate"
                             }
                         }
                     },
@@ -266,14 +267,12 @@
                             "type": {
                                 "type": "string",
                                 "description": "Type of B-roll footage",
-                                "enum": ["image", "stock", "both"],
-                                "default": "both"
+                                "enum": ["image", "stock", "both"]
                             },
                             "frequency": {
                                 "type": "string",
                                 "description": "Frequency of B-roll footage",
-                                "enum": ["low", "medium", "high"],
-                                "default": "medium"
+                                "enum": ["low", "medium", "high"]
                             }
                         }
                     },
@@ -287,18 +286,15 @@
                             },
                             "volume": {
                                 "type": "number",
-                                "description": "Volume level of background music (0.0 to 1.0)",
-                                "default": 0.5
+                                "description": "Volume level of background music (0.0 to 1.0)"
                             },
                             "fadeIn": {
                                 "type": "number",
-                                "description": "Fade in duration of background music",
-                                "default": 0.5
+                                "description": "Fade in duration of background music"
                             },
                             "fadeOut": {
                                 "type": "number",
-                                "description": "Fade out duration of background music",
-                                "default": 0.5
+                                "description": "Fade out duration of background music"
                             }
                         }
                     }

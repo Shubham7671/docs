@@ -43,10 +43,7 @@
             "group": "Get Started",
             "pages": ["introduction", "gettingStarted", "getProject"]
         },
-        {
-            "group": "Our AI Tools",
-            "pages": ["api-reference/one-pager/ai-clip"]
-        },
+
         {
             "group": "API References",
             "pages": [
