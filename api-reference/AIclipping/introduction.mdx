@@ -83,47 +83,91 @@ x-api-key: <your_api_key>
 | videoUrl           | STRING    | URL of the source video (YouTube link or video file URL)                                                                                                                                | Required  |
 | webhookUrl         | STRING    | URL to receive processing updates                                                                                                                                                       | Required  |
 | language           | STRING    | Preferred language for subtitles. Supported languages include: Bulgarian, Catalan, Chinese (Mandarin, Simplified), Chinese (Mandarin, Traditional), Czech, Danish, Dutch, English, etc. | Required  |
+| clipSettings       | OBJECT    | Settings for clip generation. Includes `reelCount`, `prompt`, `keywords`, and `reelDuration`.                                                                                           | Optional  |
+| brollSettings      | OBJECT    | Settings for B-roll footage. Includes `type` and `frequency`.                                                                                                                           | Optional  |
+| bgmSettings        | OBJECT    | Settings for background music. Includes `url`, `volume`, `fadeIn`, and `fadeOut`.                                                                                                       | Optional  |
 | subtitleStyles     | OBJECT    | Customize subtitle appearance. Includes `template`, `position`, and `fontSize`.                                                                                                         | Optional  |
 | additionalFeatures | OBJECT    | Additional video processing features. Includes `addBgm`, `addBroll`, `removeFillerWords`, `removeSilenceParts`, and `addHook`.                                                          | Optional  |
 
+#### Clip Settings
+
+-   **reelCount** (INTEGER): Number of reels to generate
+-   **prompt** (STRING): Prompt to guide the reel generation (e.g., "A viral video about the benefits of using our product")
+-   **keywords** (ARRAY): Keywords for the generated reels (e.g., ["product", "benefits", "features"])
+-   **reelDuration** (STRING): Range of reels to generate (default: "10-30")
+
+#### B-roll Settings
+
+-   **type** (STRING): Type of B-roll footage. Options:
+    -   `image`: Still images only
+    -   `stock`: Stock video footage only
+    -   `both`: Combination of images and stock footage (default)
+-   **frequency** (STRING): Frequency of B-roll insertion. Options:
+    -   `low`: Minimal B-roll insertion
+    -   `medium`: Balanced B-roll usage (default)
+    -   `high`: Maximum B-roll usage
+
+#### BGM Settings
+
+-   **url** (STRING): URL of the background music (optional - defaults to AI-generated music based on reel mood)
+-   **volume** (NUMBER): Volume level of background music from 0.0 to 1.0 (default: 0.5)
+-   **fadeIn** (NUMBER): Fade in duration of background music in seconds (default: 0.5)
+-   **fadeOut** (NUMBER): Fade out duration of background music in seconds (default: 0.5)
+
 #### Subtitle Styles
 
-- **template** (STRING): Subtitle template style. Default is "productive". Options include "none", "harmozi", "pulse", "filler", "whisperer", "marineShift", "sonic", "spotlight", "focusFlash", "inflate", "boxd", "productive", "beast", "impact", "fade", "typewriter".
-- **position** (STRING): Position of subtitles on the video. Default is "bottom-center". Options include "bottom-center", "top-center", "middle-center".
-- **fontSize** (STRING): Font size for subtitles. Default is "m". Options include "s", "m", "l", "xl".
+-   **template** (STRING): Subtitle template style. Default is "productive". Options include "none", "harmozi", "pulse", "filler", "whisperer", "marineShift", "sonic", "spotlight", "focusFlash", "inflate", "boxd", "productive", "beast", "impact", "fade", "typewriter".
+-   **position** (STRING): Position of subtitles on the video. Default is "bottom-center". Options include "bottom-center", "top-center", "middle-center".
+-   **fontSize** (STRING): Font size for subtitles. Default is "m". Options include "s", "m", "l", "xl".
 
 <Info>
-  If you want to see preview of the subtitle styles, you can go to the [AI
-  Subtitle Page](../AIsubtitle/subtitleStyle).
+    If you want to see preview of the subtitle styles, you can go to the [AI
+    Subtitle Page](../AIsubtitle/subtitleStyle).
 </Info>
 
 #### Additional Features
 
-- **addBgm** (BOOLEAN): Add background music to the video. Default is false.
-- **addBroll** (BOOLEAN): Add B-roll footage to the video. Default is false.
-- **removeFillerWords** (BOOLEAN): Remove filler words from the video. Default is false.
-- **removeSilenceParts** (BOOLEAN): Remove silence parts from the video. Default is false.
-- **addHook** (BOOLEAN): Add a hook to the video. Default is false.
+-   **addBgm** (BOOLEAN): Add background music to the video. Default is false.
+-   **addBroll** (BOOLEAN): Add B-roll footage to the video. Default is false.
+-   **removeFillerWords** (BOOLEAN): Remove filler words from the video. Default is false.
+-   **removeSilenceParts** (BOOLEAN): Remove silence parts from the video. Default is false.
+-   **addHook** (BOOLEAN): Add a hook to the video. Default is false.
 
 ## Example Request
 
 ```json
 {
-  "videoUrl": "https://www.youtube.com/watch?v=example",
-  "webhookUrl": "https://your-callback-url.com",
-  "language": "english",
-  "subtitleStyles": {
-    "template": "productive",
-    "position": "bottom-center",
-    "fontSize": "m"
-  },
-  "additionalFeatures": {
-    "addBgm": false,
-    "addBroll": false,
-    "removeFillerWords": false,
-    "removeSilenceParts": false,
-    "addHook": false
-  }
+    "videoUrl": "https://www.youtube.com/watch?v=example",
+    "webhookUrl": "https://your-callback-url.com",
+    "language": "english",
+    "clipSettings": {
+        "reelCount": 3,
+        "prompt": "A viral video about the benefits of using our product",
+        "keywords": ["product", "benefits", "features"],
+        "reelDuration": "10-30"
+    },
+    "brollSettings": {
+        "type": "both",
+        "frequency": "medium"
+    },
+    "bgmSettings": {
+        "url": "https://example.com/background-music.mp3",
+        "volume": 0.5,
+        "fadeIn": 0.5,
+        "fadeOut": 0.5
+    },
+    "subtitleStyles": {
+        "template": "productive",
+        "position": "bottom-center",
+        "fontSize": "m"
+    },
+    "additionalFeatures": {
+        "addBgm": false,
+        "addBroll": false,
+        "removeFillerWords": false,
+        "removeSilenceParts": false,
+        "addHook": false
+    }
 }
 ```
 
@@ -133,19 +177,19 @@ Upon successful processing, the webhook URL will receive a response with the sta
 
 ## Advanced Use Cases
 
-- **Dynamic Content Creation**: Use AI Clipping to generate dynamic content for social media campaigns, adapting clips to different platforms' requirements.
-- **Automated Content Curation**: Integrate AI Clipping into content management systems to automate the curation of video highlights for news or entertainment platforms.
-- **Enhanced Viewer Engagement**: Utilize the additional features to tailor video content that maximizes viewer engagement through strategic use of hooks and background elements.
+-   **Dynamic Content Creation**: Use AI Clipping to generate dynamic content for social media campaigns, adapting clips to different platforms' requirements.
+-   **Automated Content Curation**: Integrate AI Clipping into content management systems to automate the curation of video highlights for news or entertainment platforms.
+-   **Enhanced Viewer Engagement**: Utilize the additional features to tailor video content that maximizes viewer engagement through strategic use of hooks and background elements.
 
 <Info>
-  For any error handling, please refer to the [Error Handling Page](/error).
+    For any error handling, please refer to the [Error Handling Page](/error).
 </Info>
 <Info>
-  For handling webhook responses, please refer to the [Webhook Handling
-  Page](/webhook).
+    For handling webhook responses, please refer to the [Webhook Handling
+    Page](/webhook).
 </Info>
 
 <Note>
-  If you have any questions or need support, please contact us at
-  [support@quickreel.io](mailto:support@quickreel.io).
+    If you have any questions or need support, please contact us at
+    [support@quickreel.io](mailto:support@quickreel.io).
 </Note>

@@ -1,352 +1,429 @@
 {
-  "openapi": "3.0.1",
-  "info": {
-    "title": "Video Processing API",
-    "description": "API for processing video clips from video URLs or YouTube URLs",
-    "version": "1.0.0"
-  },
-  "servers": [
-    {
-      "url": "https://mango.quickreel.io/api/v2"
-    }
-  ],
-  "security": [
-    {
-      "apiKeyAuth": []
-    }
-  ],
-  "paths": {
-    "/clip": {
-      "post": {
-        "summary": "Request video processing",
-        "description": "",
-        "requestBody": {
-          "description": "Request payload for video processing",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/VideoRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Request created successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SuccessResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request: Missing required fields",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestErrorResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized: API key invalid",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedErrorResponse"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error: Please try again later or contact support",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerErrorResponse"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests: Please slow down your request rate.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TooManyRequestsErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "VideoRequest": {
-        "type": "object",
-        "properties": {
-          "videoUrl": {
-            "type": "string",
-            "description": "Video URL or YouTube URL",
-            "example": "https://www.youtube.com/watch?v=eY4pgeNBhk4"
-          },
-          "language": {
-            "type": "string",
-            "description": "Preferred language for subtitles",
-            "example": "english",
-            "enum": [
-              "bulgarian",
-              "catalan",
-              "chinese (mandarin, simplified)",
-              "chinese (mandarin, traditional)",
-              "czech",
-              "danish",
-              "dutch",
-              "english",
-              "estonian",
-              "finnish",
-              "flemish",
-              "french",
-              "german",
-              "german (switzerland)",
-              "greek",
-              "hindi",
-              "hungarian",
-              "indonesian",
-              "italian",
-              "japanese",
-              "korean",
-              "latvian",
-              "lithuanian",
-              "malay",
-              "multilingual (spanish + english)",
-              "norwegian",
-              "polish",
-              "portuguese",
-              "romanian",
-              "russian",
-              "slovak",
-              "spanish",
-              "swedish",
-              "thai",
-              "turkish",
-              "ukrainian",
-              "vietnamese"
-            ]
-          },
-          "webhookUrl": {
-            "type": "string",
-            "description": "Webhook URL for receiving processing updates",
-            "example": "https://webhook-test.com/05674b0b229c29199fec105309a00e16"
-          },
-          "subtitleStyles": {
-            "type": "object",
-            "properties": {
-              "template": {
-                "type": "string",
-                "description": "Subtitle template style",
-                "example": "productive",
-                "default": "productive",
-                "enum": [
-                  "none",
-                  "cinematic",
-                  "vivid",
-                  "whisperer2",
-                  "harmozi",
-                  "pulse",
-                  "filler",
-                  "whisperer",
-                  "marineShift",
-                  "sonic",
-                  "spotlight",
-                  "focusFlash",
-                  "inflate",
-                  "boxd",
-                  "productive",
-                  "beast",
-                  "impact",
-                  "fade",
-                  "typewriter"
-                ]
-              },
-              "position": {
-                "type": "string",
-                "description": "Position of subtitles on the video",
-                "example": "bottom-center",
-                "default": "bottom-center",
-                "enum": ["bottom-center", "top-center", "middle-center"]
-              },
-              "fontSize": {
-                "type": "string",
-                "description": "Font size for subtitles",
-                "example": "m",
-                "default": "m",
-                "enum": ["s", "m", "l", "xl"]
-              }
-            }
-          },
-          "additionalFeatures": {
-            "type": "object",
-            "properties": {
-              "addBgm": {
-                "type": "boolean",
-                "description": "Add background music to the video",
-                "example": "false",
-                "default": false
-              },
-              "addBroll": {
-                "type": "boolean",
-                "description": "Add B-roll footage to the video",
-                "example": false,
-                "default": false
-              },
-              "removeFillerWords": {
-                "type": "boolean",
-                "description": "Remove filler words from the video",
-                "example": "false",
-                "default": false
-              },
-              "removeSilenceParts": {
-                "type": "boolean",
-                "description": "Remove silence parts from the video",
-                "example": "false",
-                "default": false
-              },
-              "addHook": {
-                "type": "boolean",
-                "description": "Add hook to the video",
-                "example": "false",
-                "default": false
-              }
-            }
-          }
-        },
-        "required": ["videoUrl", "webhookUrl", "language"]
-      },
-      "SuccessResponse": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "string",
-            "description": "Status of the request",
-            "example": "created"
-          },
-          "message": {
-            "type": "string",
-            "description": "Success message",
-            "example": "project created successfully"
-          },
-          "projectId": {
-            "type": "string",
-            "description": "Project ID",
-            "example": "667bbc6973e392d3f7f6f620"
-          }
-        }
-      },
-      "ErrorResponse": {
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "type": "string",
-                "description": "Error message"
-              }
-            }
-          }
-        }
-      },
-
-      "NotFoundResponse404": {
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "type": "string",
-                "description": "Error message",
-                "example": "Video request not found."
-              }
-            }
-          }
-        }
-      },
-
-      "BadRequestErrorResponse": {
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "type": "string",
-                "description": "Error message",
-                "example": "Bad Request: Missing required fields"
-              }
-            }
-          }
-        }
-      },
-      "UnauthorizedErrorResponse": {
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "type": "string",
-                "description": "Error message",
-                "example": "Unauthorized: API key invalid"
-              }
-            }
-          }
-        }
-      },
-
-      "InternalServerErrorResponse": {
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "type": "string",
-                "description": "Error message",
-                "example": "Internal Server Error: Please try again later or contact support"
-              }
-            }
-          }
-        }
-      },
-      "TooManyRequestsErrorResponse": {
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "type": "string",
-                "description": "Error message",
-                "example": "Too Many Requests: Please slow down your request rate."
-              }
-            }
-          }
-        }
-      }
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Video Processing API",
+        "description": "API for processing video clips from video URLs or YouTube URLs",
+        "version": "1.0.0"
     },
-    "securitySchemes": {
-      "apiKeyAuth": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "x-api-key"
-      }
+    "servers": [
+        {
+            "url": "https://mango.quickreel.io/api/v2"
+        }
+    ],
+    "security": [
+        {
+            "apiKeyAuth": []
+        }
+    ],
+    "paths": {
+        "/clip": {
+            "post": {
+                "summary": "Request video processing",
+                "description": "",
+                "requestBody": {
+                    "description": "Request payload for video processing",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VideoRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Request created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request: Missing required fields",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: API key invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnauthorizedErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error: Please try again later or contact support",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalServerErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Too Many Requests: Please slow down your request rate.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TooManyRequestsErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "VideoRequest": {
+                "type": "object",
+                "properties": {
+                    "videoUrl": {
+                        "type": "string",
+                        "description": "Video URL or YouTube URL",
+                        "example": "https://www.youtube.com/watch?v=eY4pgeNBhk4"
+                    },
+                    "language": {
+                        "type": "string",
+                        "description": "Preferred language for subtitles",
+                        "example": "english",
+                        "enum": [
+                            "bulgarian",
+                            "catalan",
+                            "chinese (mandarin, simplified)",
+                            "chinese (mandarin, traditional)",
+                            "czech",
+                            "danish",
+                            "dutch",
+                            "english",
+                            "estonian",
+                            "finnish",
+                            "flemish",
+                            "french",
+                            "german",
+                            "german (switzerland)",
+                            "greek",
+                            "hindi",
+                            "hungarian",
+                            "indonesian",
+                            "italian",
+                            "japanese",
+                            "korean",
+                            "latvian",
+                            "lithuanian",
+                            "malay",
+                            "multilingual (spanish + english)",
+                            "norwegian",
+                            "polish",
+                            "portuguese",
+                            "romanian",
+                            "russian",
+                            "slovak",
+                            "spanish",
+                            "swedish",
+                            "thai",
+                            "turkish",
+                            "ukrainian",
+                            "vietnamese",
+                            "hinglish"
+                        ]
+                    },
+                    "webhookUrl": {
+                        "type": "string",
+                        "description": "Webhook URL for receiving processing updates",
+                        "example": "https://webhook-test.com/05674b0b229c29199fec105309a00e16"
+                    },
+
+                    "subtitleStyles": {
+                        "type": "object",
+                        "properties": {
+                            "template": {
+                                "type": "string",
+                                "description": "Subtitle template style",
+                                "example": "productive",
+                                "default": "productive",
+                                "enum": [
+                                    "none",
+                                    "cinematic",
+                                    "vivid",
+                                    "whisperer2",
+                                    "harmozi",
+                                    "pulse",
+                                    "filler",
+                                    "whisperer",
+                                    "marineShift",
+                                    "sonic",
+                                    "spotlight",
+                                    "focusFlash",
+                                    "inflate",
+                                    "boxd",
+                                    "productive",
+                                    "beast",
+                                    "impact",
+                                    "fade",
+                                    "typewriter"
+                                ]
+                            },
+                            "position": {
+                                "type": "string",
+                                "description": "Position of subtitles on the video",
+                                "example": "bottom-center",
+                                "default": "bottom-center",
+                                "enum": [
+                                    "bottom-center",
+                                    "top-center",
+                                    "middle-center"
+                                ]
+                            },
+                            "fontSize": {
+                                "type": "string",
+                                "description": "Font size for subtitles",
+                                "example": "m",
+                                "default": "m",
+                                "enum": ["s", "m", "l", "xl"]
+                            }
+                        }
+                    },
+                    "additionalFeatures": {
+                        "type": "object",
+                        "properties": {
+                            "addBgm": {
+                                "type": "boolean",
+                                "description": "Add background music to the video",
+                                "example": "false",
+                                "default": false
+                            },
+                            "addBroll": {
+                                "type": "boolean",
+                                "description": "Add B-roll footage to the video",
+                                "example": false,
+                                "default": false
+                            },
+                            "removeFillerWords": {
+                                "type": "boolean",
+                                "description": "Remove filler words from the video",
+                                "example": "false",
+                                "default": false
+                            },
+                            "removeSilenceParts": {
+                                "type": "boolean",
+                                "description": "Remove silence parts from the video",
+                                "example": "false",
+                                "default": false
+                            },
+                            "addHook": {
+                                "type": "boolean",
+                                "description": "Add hook to the video",
+                                "example": "false",
+                                "default": false
+                            }
+                        }
+                    },
+                    "clipSettings": {
+                        "type": "object",
+                        "description": "Settings for clip generation (optional)",
+                        "properties": {
+                            "reelCount": {
+                                "type": "integer",
+                                "description": "Number of reels to generate"
+                            },
+                            "prompt": {
+                                "type": "string",
+                                "description": "Use this prompt to generate the reels)",
+                                "example": "A viral video about the benefits of using our product"
+                            },
+                            "keywords": {
+                                "type": "array",
+                                "description": "Keywords for the generated reels",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "example": ["product", "benefits", "features"]
+                            },
+                            "reelDuration": {
+                                "type": "string",
+                                "description": "Range of reels to generate",
+                                "default": ["10-30"]
+                            }
+                        }
+                    },
+                    "brollSettings": {
+                        "type": "object",
+                        "description": "Settings for B-roll footage (optional)",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "Type of B-roll footage",
+                                "enum": ["image", "stock", "both"],
+                                "default": "both"
+                            },
+                            "frequency": {
+                                "type": "string",
+                                "description": "Frequency of B-roll footage",
+                                "enum": ["low", "medium", "high"],
+                                "default": "medium"
+                            }
+                        }
+                    },
+                    "bgmSettings": {
+                        "type": "object",
+                        "description": "Settings for background music (optional)",
+                        "properties": {
+                            "url": {
+                                "type": "string",
+                                "description": "URL of the background music default is ai generated music according to the reel mood"
+                            },
+                            "volume": {
+                                "type": "number",
+                                "description": "Volume level of background music (0.0 to 1.0)",
+                                "default": 0.5
+                            },
+                            "fadeIn": {
+                                "type": "number",
+                                "description": "Fade in duration of background music",
+                                "default": 0.5
+                            },
+                            "fadeOut": {
+                                "type": "number",
+                                "description": "Fade out duration of background music",
+                                "default": 0.5
+                            }
+                        }
+                    }
+                },
+                "required": ["videoUrl", "webhookUrl", "language"]
+            },
+            "SuccessResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the request",
+                        "example": "created"
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "Success message",
+                        "example": "project created successfully"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Project ID",
+                        "example": "667bbc6973e392d3f7f6f620"
+                    }
+                }
+            },
+            "ErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "object",
+                        "properties": {
+                            "message": {
+                                "type": "string",
+                                "description": "Error message"
+                            }
+                        }
+                    }
+                }
+            },
+
+            "NotFoundResponse404": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "object",
+                        "properties": {
+                            "message": {
+                                "type": "string",
+                                "description": "Error message",
+                                "example": "Video request not found."
+                            }
+                        }
+                    }
+                }
+            },
+
+            "BadRequestErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "object",
+                        "properties": {
+                            "message": {
+                                "type": "string",
+                                "description": "Error message",
+                                "example": "Bad Request: Missing required fields"
+                            }
+                        }
+                    }
+                }
+            },
+            "UnauthorizedErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "object",
+                        "properties": {
+                            "message": {
+                                "type": "string",
+                                "description": "Error message",
+                                "example": "Unauthorized: API key invalid"
+                            }
+                        }
+                    }
+                }
+            },
+
+            "InternalServerErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "object",
+                        "properties": {
+                            "message": {
+                                "type": "string",
+                                "description": "Error message",
+                                "example": "Internal Server Error: Please try again later or contact support"
+                            }
+                        }
+                    }
+                }
+            },
+            "TooManyRequestsErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "object",
+                        "properties": {
+                            "message": {
+                                "type": "string",
+                                "description": "Error message",
+                                "example": "Too Many Requests: Please slow down your request rate."
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "apiKeyAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "x-api-key"
+            }
+        }
     }
-  }
 }
