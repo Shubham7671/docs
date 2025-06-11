@@ -267,12 +267,12 @@
                             "type": {
                                 "type": "string",
                                 "description": "Type of B-roll footage",
-                                "enum": ["image", "stock", "both"]
+                                "enum": ["images", "stock", "mixed"]
                             },
                             "frequency": {
                                 "type": "string",
                                 "description": "Frequency of B-roll footage",
-                                "enum": ["low", "medium", "high"]
+                                "enum": ["none", "low", "medium", "high"]
                             }
                         }
                     },
