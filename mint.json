@@ -107,7 +107,7 @@
 
                 {
                     "group": "AI Text To Video",
-                    "icon": "text",
+                    "icon": "video",
                     "pages": [
                         "api-reference/ttv/introduction",
                         "api-reference/ttv/create",
@@ -119,14 +119,14 @@
         },
 
         {
-            "group": "Additional APIs",
+            "group": "Additional Tools",
             "pages": [
                 {
                     "group": "Social Media Posting",
                     "icon": "share",
                     "pages": [
-                        "api-reference/SocialMediaPosting/introduction",
-                        "api-reference/SocialMediaPosting/create"
+                        "api-reference/Autopost/introduction",
+                        "api-reference/Autopost/create"
                     ]
                 }
             ]
