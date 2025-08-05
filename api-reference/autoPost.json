@@ -1,0 +1,245 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Auto Post API",
+        "description": "API for automatically posting videos to social media platforms",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://mango.quickreel.io/api/v2"
+        }
+    ],
+    "security": [
+        {
+            "apiKeyAuth": []
+        }
+    ],
+    "paths": {
+        "/publish-to-socials": {
+            "post": {
+                "summary": "Publish video to social media platforms",
+                "description": "Automatically post videos to connected social media accounts with scheduling capabilities",
+                "requestBody": {
+                    "description": "Request payload for social media posting",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PublishRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Post scheduled successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request: Missing required fields",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: API key invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnauthorizedErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error: Please try again later or contact support",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalServerErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Too Many Requests: Please slow down your request rate.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TooManyRequestsErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "PublishRequest": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "Title of the post"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description/caption for the post"
+                    },
+                    "privacy": {
+                        "type": "string",
+                        "description": "Privacy setting for the post",
+                        "enum": ["public", "private", "unlisted"],
+                        "default": "public"
+                    },
+                    "scheduleTime": {
+                        "type": "string",
+                        "description": "Scheduled time for posting (ISO 8601 format)",
+                        "example": "2025-08-04T16:20:00.000Z"
+                    },
+                    "videoUrl": {
+                        "type": "string",
+                        "description": "URL of the video to be posted"
+                    },
+                    "apiAccessKeys": {
+                        "type": "array",
+                        "description": "Array of API access keys (you can get them from the social accounts page on QuickReel.io)",
+                        "items": {
+                            "type": "string"
+                        },
+                        "example": ["1dbedb8df8b098ea68138ffbc0f8ab4640f6bcd0"]
+                    }
+                },
+                "required": ["videoUrl", "apiAccessKeys"]
+            },
+            "SuccessResponse": {
+                "type": "object",
+                "properties": {
+                    "statusCode": {
+                        "type": "integer",
+                        "description": "HTTP status code",
+                        "example": 200
+                    },
+                    "success": {
+                        "type": "boolean",
+                        "description": "Success status",
+                        "example": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "Success message",
+                        "example": "Successfully created your post"
+                    },
+                    "data": {
+                        "type": "object",
+                        "description": "Response data",
+                        "properties": {
+                            "posts": {
+                                "type": "array",
+                                "description": "Array of created post IDs",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "example": ["6891b921ba2c9dea1ee86fe4"]
+                            }
+                        }
+                    }
+                }
+            },
+            "ErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "object",
+                        "properties": {
+                            "message": {
+                                "type": "string",
+                                "description": "Error message"
+                            }
+                        }
+                    }
+                }
+            },
+            "BadRequestErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "object",
+                        "properties": {
+                            "message": {
+                                "type": "string",
+                                "description": "Error message",
+                                "example": "Bad Request: Missing required fields"
+                            }
+                        }
+                    }
+                }
+            },
+            "UnauthorizedErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "object",
+                        "properties": {
+                            "message": {
+                                "type": "string",
+                                "description": "Error message",
+                                "example": "Unauthorized: API key invalid"
+                            }
+                        }
+                    }
+                }
+            },
+            "InternalServerErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "object",
+                        "properties": {
+                            "message": {
+                                "type": "string",
+                                "description": "Error message",
+                                "example": "Internal Server Error: Please try again later or contact support"
+                            }
+                        }
+                    }
+                }
+            },
+            "TooManyRequestsErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "object",
+                        "properties": {
+                            "message": {
+                                "type": "string",
+                                "description": "Error message",
+                                "example": "Too Many Requests: Please slow down your request rate."
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "apiKeyAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "x-api-key",
+                "description": "API key for authentication"
+            }
+        }
+    }
+}

@@ -45,7 +45,7 @@
         },
 
         {
-            "group": "API References",
+            "group": "AI Tools",
             "pages": [
                 {
                     "group": "AI Clip",
@@ -117,6 +117,21 @@
                 }
             ]
         },
+
+        {
+            "group": "Additional APIs",
+            "pages": [
+                {
+                    "group": "Social Media Posting",
+                    "icon": "share",
+                    "pages": [
+                        "api-reference/AutoPost/overview",
+                        "api-reference/AutoPost/request"
+                    ]
+                }
+            ]
+        },
+
         {
             "group": "Utilities",
             "icon": "info",

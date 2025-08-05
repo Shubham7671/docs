@@ -1,0 +1,144 @@
+---
+title: "Social Media Posting"
+icon: "map"
+description: "Social Media Posting enables seamless automatic publishing of videos to multiple social media platforms. This powerful tool allows you to schedule and post content across various social networks with customizable privacy settings, descriptions, and timing. Perfect for content creators, marketers, and businesses looking to streamline their social media presence and maintain consistent posting schedules across multiple platforms."
+---
+
+## How to Publish to Social Media
+
+To publish a video to social media platforms using Auto Post, send a POST request to the specified endpoint with the required parameters.
+
+**Base URL : `https://mango.quickreel.io/api/v2`**
+
+**Endpoint : `/publish-to-socials`**
+
+**Method : `POST`**
+
+**Headers :**
+
+```plaintext
+Content-Type: application/json
+x-api-key: <your_api_key>
+```
+
+**Request Body Parameters**
+
+| Key           | Data Type | Description                                                                                                                                | Mandatory |
+| ------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
+| videoUrl      | STRING    | URL of the video to be posted to social media platforms                                                                                    | Required  |
+| apiAccessKeys | ARRAY     | Array of API access keys for connected social media accounts. You can get these from the social accounts page on QuickReel.io              | Required  |
+| title         | STRING    | Title of the post                                                                                                                          | Optional  |
+| description   | STRING    | Description/caption for the post                                                                                                           | Optional  |
+| privacy       | STRING    | Privacy setting for the post. Options: "public", "private", "unlisted". Default: "public"                                                  | Optional  |
+| scheduleTime  | STRING    | Scheduled time for posting in ISO 8601 format (e.g., "2025-08-04T16:20:00.000Z"). If not provided, the post will be published immediately. | Optional  |
+
+## How to Get apiAccessKeys
+
+To obtain API access keys for your social media accounts, follow these steps:
+
+1. **Login to QuickReel.io**
+
+    - Visit [www.quickreel.io](https://www.quickreel.io)
+    - Sign in to your account
+
+2. **Navigate to Social Accounts**
+
+    - Go to the social accounts section from the sidebar
+    - This is where you can manage all your connected social media platforms
+
+3. **Connect Your Accounts**
+
+    - Click on "Connect" for each social media platform you want to use
+    - Follow the authentication process for each platform
+    - Grant necessary permissions for posting capabilities
+
+4. **Request API Access**
+
+    - Once your accounts are connected, click on the "Request API Access" button below each connected account
+    - This will generate a unique API access key for that specific platform
+
+5. **Copy Your Access Keys**
+    - Copy the generated access key for each platform
+    - Store these keys securely as they provide access to post on your behalf
+    - You can use multiple keys in the `apiAccessKeys` array to post to multiple platforms simultaneously
+
+<Info>
+    Keep your API access keys secure and never share them publicly. These keys
+    provide posting access to your social media accounts.
+</Info>
+
+## Parameter Details
+
+### Required Parameters
+
+-   **videoUrl** (STRING): The URL of the video file you want to post to social media platforms. This can be a direct video file URL or a hosted video link.
+
+-   **apiAccessKeys** (ARRAY): An array of API access keys that correspond to your connected social media accounts. These keys are obtained from the social accounts management page on QuickReel.io and are used to authenticate with each platform.
+
+### Optional Parameters
+
+-   **title** (STRING): A catchy title for your social media post. This will be displayed as the main headline of your post.
+
+-   **description** (STRING): A detailed description or caption for your post. This is where you can add context, hashtags, call-to-actions, or any additional information about your video content.
+
+-   **privacy** (STRING): Controls the visibility of your post across platforms:
+
+    -   `public`: Post is visible to everyone (default)
+    -   `private`: Post is only visible to you
+    -   `unlisted`: Post is visible to anyone with the direct link
+
+-   **scheduleTime** (STRING): Specify when you want the post to be published. Use ISO 8601 format (e.g., "2025-08-04T16:20:00.000Z"). If omitted, the post will be published immediately.
+
+## Example Request
+
+```json
+{
+    "videoUrl": "https://example.com/video.mp4",
+    "apiAccessKeys": ["1dbedb8df8b098ea68138ffbc0f8ab4640f6bcd0"],
+    "title": "Amazing Product Demo",
+    "description": "Check out this incredible new feature! #innovation #tech #demo",
+    "privacy": "public",
+    "scheduleTime": "2025-08-04T16:20:00.000Z"
+}
+```
+
+## Response
+
+Upon successful processing, you'll receive a response with the status and details of the scheduled posts:
+
+```json
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "Successfully created your post",
+    "data": {
+        "posts": ["6891b921ba2c9dea1ee86fe4"]
+    }
+}
+```
+
+## Advanced Use Cases
+
+-   **Multi-Platform Publishing**: Schedule the same video content across multiple social media platforms simultaneously with platform-specific optimizations.
+
+-   **Content Calendar Management**: Plan and schedule your entire content calendar in advance, ensuring consistent posting across all your social media channels.
+
+-   **Brand Consistency**: Maintain consistent messaging and branding across all social media platforms with unified posting capabilities.
+
+-   **Analytics Integration**: Track performance metrics across multiple platforms from a single dashboard.
+
+## Supported Platforms
+
+Auto Post supports integration with major social media platforms including:
+
+-   YouTube
+-   Instagram
+-   TikTok
+-   LinkedIn
+-   Pinterest
+-   And more...
+
+<Note>
+    If you have any questions or need support, please contact us at
+    [support@quickreel.io](mailto:support@quickreel.io).
+</Note>
